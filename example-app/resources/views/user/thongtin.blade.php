@@ -35,6 +35,8 @@
         </tbody>
     </table>
 
+    <a href="info"><button type="button" class="btn btn-info">nhập thông tin</button></a>
+    <a href="users"><button type="button" class="btn btn-info">thông tin từ database</button></a>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
