@@ -22,6 +22,7 @@ class CreateTableProducts extends Migration
             $table->text('detail');
             $table->integer('sale')->default(0);
             $table->timestamps();
+            $table->foreign('cate_id')->references('id')->on('categories');
         });
     }
 
