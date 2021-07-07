@@ -9,11 +9,20 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>Users List</title>
 </head>
 
 <body>
     <h1 class="text-center">User List</h1>
+    <div class="d-flex justify-content-center">
+        <a href="\">
+            <button type="button" class="btn btn-secondary" style="margin-right: 5px;">Dashboard</button>
+        </a>
+        <button type="button" class="btn btn-secondary" style="margin-right: 5px;">Categories</button>
+        <button type="button" class="btn btn-secondary" style="margin-right: 5px;">Products</button>
+        <button type="button" class="btn btn-primary" style="margin-right: 5px;">+ Add new</button>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -41,11 +50,17 @@
                 <td>{{Carbon\Carbon::parse($user->date_of_birth)->format('j F, Y')}}</td>
                 <td>{{$user->phone}}</td>
                 <td>{{$user->email}}</td>
+                <td>
+                    <i class="fas fa-eye" style="color:blue"></i>
+                    <i class="fas fa-edit" style="color:green"></i>
+                    <i class="fas fa-trash-alt" style="color:red"></i>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    {{ $list_user->links()}}
+    <div class="d-flex justify-content-center">{{ $list_user->links()}}</div>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
