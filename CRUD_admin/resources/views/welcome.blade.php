@@ -102,11 +102,14 @@
             </div>
 
             <div class="col-md-3">
-                <div class="card-counter info">
-                    <i class="fa fa-users"></i>
-                    <span class="count-numbers">{{$count_user}}</span>
-                    <span class="count-name">Users</span>
-                </div>
+                <a href="list-user">
+                    <div class="card-counter info">
+                        <i class="fa fa-users"></i>
+                        <span class="count-numbers">{{$count_user}}</span>
+                        <span class="count-name">Users</span>
+                    </div>
+                </a>
+
             </div>
         </div>
     </div>

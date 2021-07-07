@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <h1 class="text-center">User List</h1>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,6 +23,7 @@
                 <th scope="col">Date Of Birth</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -43,7 +45,7 @@
             @endforeach
         </tbody>
     </table>
-
+    {{ $list_user->links()}}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

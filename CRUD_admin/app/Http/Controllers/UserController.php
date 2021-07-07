@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function list_user()
     {
-        $list_user = User::all();
+        $list_user = DB::table('users')->paginate(5);
         return view('user.list_user', compact('list_user'));
     }
 }
