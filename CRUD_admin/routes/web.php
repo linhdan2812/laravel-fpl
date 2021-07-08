@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'count_record']);
-Route::get('list-user', [UserController::class, 'list_user']);
+Route::get('/', [HomeController::class, 'count_record'])->name('dashboard');
+Route::get('list-user', [UserController::class, 'list_user'])->name('listUser');

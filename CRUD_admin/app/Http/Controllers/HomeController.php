@@ -15,6 +15,6 @@ class HomeController extends Controller
         $count_user = User::all()->count();
         $count_cate = Category::all()->count();
         $count_prod = Product::all()->count();
-        return view('welcome', compact('count_user', 'count_cate', 'count_prod'));
+        return view('admins.dashboard.dashboard', compact('count_user', 'count_cate', 'count_prod'));
     }
 }
