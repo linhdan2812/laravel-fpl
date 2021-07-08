@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="subnav-text" href="grids.html">
+                    <a class="subnav-text" href="{{route('addUser')}}">
                         Add New User
                     </a>
                 </li>

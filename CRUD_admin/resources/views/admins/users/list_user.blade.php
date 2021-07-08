@@ -6,10 +6,10 @@
     <thead>
         <tr>
             <th scope="col" style="width: 50px">id</th>
-            <th scope="col" style="width: 250px">Name</th>
+            <th scope="col">Name</th>
             <th scope="col" style="width: 90px">Gender</th>
-            <th scope="col">Date Of Birth</th>
-            <th scope="col">Phone</th>
+            <th scope="col" style="width: 150px">Date Of Birth</th>
+            <th scope="col" style="width: 150px">Phone</th>
             <th scope="col">Email</th>
             <th scope="col">Action</th>
         </tr>
@@ -19,20 +19,24 @@
         <tr>
             <th scope="row">{{$user->id}}</th>
             <td>{{$user->name}}</td>
-            <td class="text-center">@if (($user->gender) === 1)
+            <td>@if (($user->gender) === 1)
                 Nam
                 @elseif (($user->gender) === 0)
                 Nữ
                 @else
                 Khác
                 @endif</td>
-            <td class="text-center">{{Carbon\Carbon::parse($user->date_of_birth)->format('j F, Y')}}</td>
-            <td class="text-center">{{$user->phone}}</td>
+            <td>{{Carbon\Carbon::parse($user->date_of_birth)->format('d-m-Y')}}</td>
+            <td>{{$user->phone}}</td>
             <td>{{$user->email}}</td>
             <td>
                 <i class="fas fa-eye" style="color:blue"></i>
                 <i class="fas fa-edit" style="color:green"></i>
-                <i class="fas fa-trash-alt" style="color:red"></i>
+                @csrf
+                @method('DELETE')
+                <a href="{{route('deleteUsser', $user->id)}}" style="margin:0px">
+                    <i class="fas fa-trash-alt" style="color:red"></i>
+                </a>
             </td>
         </tr>
         @endforeach

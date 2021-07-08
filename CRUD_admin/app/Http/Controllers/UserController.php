@@ -13,4 +13,13 @@ class UserController extends Controller
         $list_user = DB::table('users')->paginate(10);
         return view('admins.users.list_user', compact('list_user'));
     }
+    public function add_user()
+    {
+        return view('admins.users.add_user');
+    }
+    public function delete_user(Request $request, $id)
+    {
+        User::where('id', $id)->delete();
+        echo '<script language="javascript">alert("Xóa thành viên thành công!");</script>';
+    }
 }

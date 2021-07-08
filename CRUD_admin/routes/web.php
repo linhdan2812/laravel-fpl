@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'count_record'])->name('dashboard');
 Route::get('list-user', [UserController::class, 'list_user'])->name('listUser');
+Route::get('add-user', [UserController::class, 'add_user'])->name('addUser');
+Route::get('user/delete/{id}', [UserController::class, 'delete_user'])->name('deleteUsser');
