@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -20,6 +21,7 @@ class UserController extends Controller
     public function delete_user(Request $request, $id)
     {
         User::where('id', $id)->delete();
-        echo '<script language="javascript">alert("Xóa thành viên thành công!");</script>';
+        // $list_user = DB::table('users')->paginate(10);
+        return redirect()->route('listUser');
     }
 }
