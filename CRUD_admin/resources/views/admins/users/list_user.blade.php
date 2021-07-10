@@ -5,6 +5,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col" style="width: 50px">#</th>
             <th scope="col" style="width: 50px">id</th>
             <th scope="col">Name</th>
             <th scope="col" style="width: 90px">Gender</th>
@@ -15,8 +16,12 @@
         </tr>
     </thead>
     <tbody>
+        @php
+        $stt =1
+        @endphp
         @foreach($list_user as $user)
         <tr>
+            <th scope="row">{{$stt++}}</th>
             <th scope="row">{{$user->id}}</th>
             <td>{{$user->name}}</td>
             <td>@if (($user->gender) === 1)
@@ -30,11 +35,17 @@
             <td>{{$user->phone}}</td>
             <td>{{$user->email}}</td>
             <td>
-                <i class="fas fa-eye" style="color:blue"></i>
-                <i class="fas fa-edit" style="color:green"></i>
+                <a href="{{route('user.detail', $user->id)}}" style="margin:0px">
+                    <i class="fas fa-eye" style="color:blue"></i>
+                </a>
+                <a href="{{route('user.edit', $user->id)}}" style="margin:0px">
+                    <i class="fas fa-edit" style="color:green"></i>
+                </a>
+
+                <!-- nút delete -->
                 @csrf
                 @method('DELETE')
-                <a href="{{route('deleteUsser', $user->id)}}" style="margin:0px">
+                <a href="{{route('user.delete', $user->id)}}" style="margin:0px">
                     <i class="fas fa-trash-alt" style="color:red"></i>
                 </a>
             </td>

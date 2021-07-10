@@ -16,12 +16,12 @@
             </a>
             <ul>
                 <li>
-                    <a class="subnav-text" href="{{route('listUser')}}">
+                    <a class="subnav-text" href="{{route('user.index')}}">
                         List User
                     </a>
                 </li>
                 <li>
-                    <a class="subnav-text" href="{{route('addUser')}}">
+                    <a class="subnav-text" href="{{route('user.create')}}">
                         Add New User
                     </a>
                 </li>

@@ -16,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'count_record'])->name('dashboard');
-Route::get('list-user', [UserController::class, 'list_user'])->name('listUser');
-Route::get('add-user', [UserController::class, 'add_user'])->name('addUser');
-Route::get('user/delete/{id}', [UserController::class, 'delete_user'])->name('deleteUsser');
+// DÀNH CHO USER
+// hiển thị
+Route::get('users', [UserController::class, 'list_user'])->name('user.index');
+// trang thêm mới
+Route::get('user/create', [UserController::class, 'create_user'])->name('user.create');
+// thêm mới lên data
+Route::get('user/insert', [UserController::class, 'insert_user'])->name('user.insert');
+// xoá
+Route::get('user/delete/{id}', [UserController::class, 'delete_user'])->name('user.delete');
+// trang sửa
+Route::get('user/edit/{id}', [UserController::class, 'edit_user'])->name('user.edit');
+// update lên data
+Route::get('user/update/{id}', [UserController::class, 'update_user'])->name('user.update');
+// chi tiết user
+Route::get('user/detail/{id}', [UserController::class, 'detail_user'])->name('user.detail');
