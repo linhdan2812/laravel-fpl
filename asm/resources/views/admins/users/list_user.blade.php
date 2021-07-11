@@ -14,35 +14,50 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Active</th>
+
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Active</th>
+
                     </tr>
                 </tfoot>
                 <tbody>
+                    @foreach($list_user as $user)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{$user->username}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->phone}}</td>
+                        <td>
+                            @if (($user->active) === 1)
+                            Active
+                            @else
+                            Not active
+                            @endif
+                        </td>
+                        <td>
+                            <i class="fas fa-eye" style="color:#FF00FF"></i>
+                            <a href="{{route('admin.user.getedit', $user->id)}}">
+                                <i class="fas fa-edit" style="color:green"></i>
+                            </a>
+
+                        </td>
+
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<div class="d-flex justify-content-center">{{ $list_user->links()}}</div>
 @endsection

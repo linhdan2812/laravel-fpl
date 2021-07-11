@@ -20,7 +20,7 @@ class CreateTableUsers extends Migration
             $table->string('password');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->integer('active')->default(0);
+            $table->integer('active')->default('')->nullable();
             $table->timestamps();
         });
     }
