@@ -15,12 +15,21 @@
         <label for="exampleInputPassword1" class="form-label">Phone</label>
         <input type="text" class="form-control" id="exampleInputPassword1" value="{{$user->phone}}" readonly>
     </div>
-    <div class="form-check form-switch ml-4">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="1"
-            {{  ($user->active == 1 ? ' checked' : '') }}>
-        <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="active" id="inlineRadio1" value="0"
+            {{  ($user->active == 0 ? ' checked' : '') }}>
+        <label class="form-check-label" for="inlineRadio1">Not Active</label>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="active" id="inlineRadio2" value="1"
+            {{  ($user->active == 1 ? ' checked' : '') }}>
+        <label class="form-check-label" for="inlineRadio2">Active</label>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+
 </form>
 
 @endsection

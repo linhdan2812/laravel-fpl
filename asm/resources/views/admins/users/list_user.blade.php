@@ -39,13 +39,13 @@
                         <td>{{$user->phone}}</td>
                         <td>
                             @if (($user->active) === 1)
-                            Active
+                            <label class="bg bg-warning text-dark">Active</label>
                             @else
-                            Not active
+                            <label class="bg bg-info text-dark">Not Active</label>
                             @endif
                         </td>
                         <td>
-                            <i class="fas fa-eye" style="color:#FF00FF"></i>
+                            <!-- <i class="fas fa-eye" style="color:#FF00FF"></i> -->
                             <a href="{{route('admin.user.getedit', $user->id)}}">
                                 <i class="fas fa-edit" style="color:green"></i>
                             </a>
@@ -59,5 +59,5 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-center">{{ $list_user->links()}}</div>
+
 @endsection
