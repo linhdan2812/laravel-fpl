@@ -13,9 +13,10 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
+                        <th>#</th>
+                        <th>User Name</th>
+                        <th>Products</th>
+                        <th>Content</th>
                         <th>Status</th>
                         <th>Active</th>
 
@@ -23,33 +24,40 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
+                        <th>#</th>
+                        <th>User Name</th>
+                        <th>Products</th>
+                        <th>Content</th>
                         <th>Status</th>
                         <th>Active</th>
 
                     </tr>
                 </tfoot>
+                @php
+                $stt=1
+                @endphp
                 <tbody>
-                    @foreach($list_user as $user)
+                    @foreach($comments as $cmt)
                     <tr>
-                        <td>{{$user->username}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->phone}}</td>
+                        <td>{{$stt++}}</td>
+                        <td>{{$cmt->username}}</td>
+                        <td>{{$cmt->prod_name}}</td>
+                        <td>{{$cmt ->content}}</td>
                         <td>
-                            @if (($user->active) === 1)
-                            <label class="bg bg-warning text-dark">Active</label>
+                            @if (($cmt->status) === 1)
+                            Approved
                             @else
-                            <label class="bg bg-info text-dark">Not Active</label>
+                            Not Approved
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('admin.user.getDetail', $user->id)}}">
-                                <i class="fas fa-eye" style="color:#FF00FF"></i>
-                            </a>
-                            <a href="{{route('admin.user.getedit', $user->id)}}">
+                            <a href="{{route('admin.cmt.getEdit', $cmt->id)}}">
                                 <i class="fas fa-edit" style="color:green"></i>
+                            </a>
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{route('admin.cmt.delete', $cmt->id)}}">
+                                <i class="fas fa-trash-alt" style="color:red"></i>
                             </a>
 
                         </td>

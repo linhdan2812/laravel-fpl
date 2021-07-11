@@ -18,6 +18,7 @@ class CreateTableComments extends Migration
             $table->unsignedBigInteger('prod_id');
             $table->unsignedBigInteger('user_id');
             $table->text('content');
+            $table->integer('status')->default('0');
             $table->foreign('prod_id')->references('id')->on('products');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

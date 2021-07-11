@@ -26,7 +26,8 @@ class CommentFactory extends Factory
         return [
             'prod_id' => Product::all()->random()->id,
             'user_id' => User::all()->random()->id,
-            'content' =>  $this->faker->sentence(200)
+            'content' =>  $this->faker->sentence(200),
+            'status' => rand(0, 1)
         ];
     }
 }

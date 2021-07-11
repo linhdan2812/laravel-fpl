@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -66,5 +67,18 @@ class AdminUserController extends Controller
         //     //throw $th;
         //     dump($th->getMessage());
         // }
+    }
+
+    public function getDetail_user(Request $request, $id)
+    {
+        // dump($id);
+        $detaiUser = User::where('id', $request->id)->first();
+        $comments = DB::table('comments')
+            ->join('users', 'comments.user_id', '=', 'users.id')
+            ->join('products', 'comments.prod_id', '=', 'products.id')
+            ->select('comments.*', 'users.username', 'products.prod_name')
+            ->where('users.id', $id)->get();
+        // dump($comments);
+        return view('admins.users.detail_user', compact('detaiUser', 'comments'));
     }
 }
