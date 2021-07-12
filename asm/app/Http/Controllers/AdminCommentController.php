@@ -18,10 +18,18 @@ class AdminCommentController extends Controller
         // dump($comments);
         return view('admins.comments.list_comments', compact('comments'));
     }
-    public function getEdit_comment(Request $request)
+    public function getEdit_comment(Request $request, $id)
     {
-        $getCmt = Comment::where('id', $request->id)->first();
-        return view('admins.comments.edit_comment', compact('getCmt'));
+        // $cmt = Comment::where('id', $request->id)->first();
+        $cmt = DB::table('comments')
+            ->join('users', 'users.id', '=', 'comments.user_id')
+            ->join('products', 'products.id', '=', 'comments.prod_id')
+            ->select('comments.*', 'users.username', 'products.prod_name')
+            ->where('comments.id', $id)
+            ->get();
+        // dump($cmt);
+        // dump($getCmt);
+        return view('admins.comments.edit_comment', compact('cmt'));
     }
     public function postEdit_comment(Request $request)
     {

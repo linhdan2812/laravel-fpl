@@ -2,25 +2,29 @@
 @section('content')
 <div class="container">
     <div class="p-3 mb-2 ">
-        <h6>Comment from ... for product...</h6>
-        <p>{{$getCmt->content}}</p>
+
     </div>
     <div>
-        <form action="{{route('admin.cmt.postEdit',$getCmt->id )}}" method="post">
+        @foreach($cmt as $cmt)
+        <form action="{{route('admin.cmt.postEdit',$cmt->id )}}" method="post">
             @csrf
-
+            <h6>Comment from <b>{{$cmt->username}}</b> for product <b>{{$cmt->prod_name}}</b></h6>
+            <p>{{$cmt->content}}</p>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="0"
-                    {{  ($getCmt->status == 0 ? ' checked' : '') }}>
+                    {{  ($cmt->status == 0 ? ' checked' : '') }}>
                 <label class="form-check-label" for="inlineRadio1">Not Approved</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="1"
-                    {{  ($getCmt->status == 1 ? ' checked' : '') }}>
+                    {{  ($cmt->status == 1 ? ' checked' : '') }}>
                 <label class="form-check-label" for="inlineRadio2">Approved</label>
             </div>
-            <button type="submit" class="btn btn-primary">confirm</button>
+            <div>
+                <button type="submit" class="btn btn-primary">confirm</button>
+            </div>
         </form>
+        @endforeach
     </div>
 </div>
 @endsection
