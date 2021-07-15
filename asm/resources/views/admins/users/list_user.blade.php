@@ -10,6 +10,8 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
+
+            @if(!empty($list_user))
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -58,6 +60,10 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+            <h4>chưa có người dùng</h4>
+            @endif
+
         </div>
     </div>
 </div>
