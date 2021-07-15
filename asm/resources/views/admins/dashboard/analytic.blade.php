@@ -1,4 +1,5 @@
 @extends('admins.dashboard')
+
 @section('content')
 
 <!-- Page Heading -->

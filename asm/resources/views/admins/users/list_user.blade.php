@@ -10,11 +10,10 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-
-            @if(!empty($list_user))
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
@@ -25,6 +24,7 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
@@ -34,8 +34,12 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                    @php
+                    $stt = 1
+                    @endphp
                     @foreach($list_user as $user)
                     <tr>
+                        <td>{{$stt++}}</td>
                         <td>{{$user->username}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
@@ -60,10 +64,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @else
-            <h4>chưa có người dùng</h4>
-            @endif
-
+            {{$list_user->links()}}
         </div>
     </div>
 </div>

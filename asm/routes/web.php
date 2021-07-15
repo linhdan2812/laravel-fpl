@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminCommentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
@@ -38,3 +39,19 @@ Route::get('admin/comments', [AdminCommentController::class, 'getList_comments']
 Route::get('admin/comment/edit/{id}', [AdminCommentController::class, 'getEdit_comment'])->name('admin.cmt.getEdit');
 Route::post('admin/comment/edit/{id}', [AdminCommentController::class, 'postEdit_comment'])->name('admin.cmt.postEdit');
 Route::get('admin/comment/delete/{id}', [AdminCommentController::class, 'delete_comment'])->name('admin.cmt.delete');
+
+
+
+
+// CHUYÊN MỤC DÀNH CHO CATEGORIES
+// danh sách category
+Route::get('admin/categories', [AdminCategoriesController::class, 'getList_cate'])->name('admin.cate.list');
+// trỏ đến trang thêm
+Route::get('admin/create-category', [AdminCategoriesController::class, 'getCreate_cate'])->name('admin.cate.getCreate');
+// post thêm cate
+Route::post('admin/category/create', [AdminCategoriesController::class, 'postCreate_cate'])->name('admin.cate.postCreate');
+// xoá
+Route::get('admin/category/delete/{id}', [AdminCategoriesController::class, 'delete_cate'])->name('admin.cate.delete');
+// sửa cate
+Route::get('admin/category/edit/{id}', [AdminCategoriesController::class, 'getEdit_cate'])->name('admin.cate.getEdit');
+Route::post('admin/category/edit/{id}', [AdminCategoriesController::class, 'postEdit_cate'])->name('admin.cate.postEdit');
