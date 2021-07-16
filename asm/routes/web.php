@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminCommentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProductsController;
 use App\Http\Controllers\AdminUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,13 @@ Route::get('admin/category/delete/{id}', [AdminCategoriesController::class, 'del
 // sửa cate
 Route::get('admin/category/edit/{id}', [AdminCategoriesController::class, 'getEdit_cate'])->name('admin.cate.getEdit');
 Route::post('admin/category/edit/{id}', [AdminCategoriesController::class, 'postEdit_cate'])->name('admin.cate.postEdit');
+
+// CHUYÊN MỤC DÀNH CHO PRODUCTS
+// danh sách product
+Route::get('admin/products', [AdminProductsController::class, 'getList_prod'])->name('admin.prod.list');
+// xoá 
+Route::post('admin/product/delete/{id}', [AdminProductsController::class, 'delete_product'])->name('admin.prod.delete');
+
+Route::get('admin/product/create', [AdminProductsController::class, 'getCreate_product'])->name('admin.prod.getCreate');
+Route::post('admin/product/create', [AdminProductsController::class, 'postCreate_product'])->name('admin.prod.postCreate');
+Route::get('admin/product/edit/{id}', [AdminProductsController::class, 'getEdit_product'])->name('admin.prod.getEdit');

@@ -23,7 +23,11 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('admins/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('admins/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    <script>
+    window.onload = function() {
+        alert('một số data không xoá được do đang liên kết với bảng khác :( cũng buồn nhắm mà chưa làm xong');
+    };
+    </script>
 </head>
 
 <body id="page-top">
@@ -82,14 +86,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-boxes"></i>
                     <span>Products</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">List of products</a>
-                        <a class="collapse-item" href="utilities-border.html">Create new product</a>
+                        <a class="collapse-item" href="{{route('admin.prod.list')}}">List of products</a>
+                        <a class="collapse-item" href="{{route('admin.prod.getCreate')}}">Create new product</a>
                     </div>
                 </div>
             </li>

@@ -26,13 +26,13 @@ class AdminCategoriesController extends Controller
             'cate_name' => $cate_name
         ]);
         if ($create) {
-            echo '<script language="javascript">alert("Thêm mới thành công!");</script>';
             return redirect()->route('admin.cate.list');
         }
     }
 
     public function delete_cate(Request $request, $id)
     {
+        // dump(1);
         Category::where('id', $id)->delete();
         return redirect()->route('admin.cate.list');
     }
