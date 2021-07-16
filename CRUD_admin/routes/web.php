@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Productscontroller;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +33,9 @@ Route::get('user/edit/{id}', [UserController::class, 'edit_user'])->name('user.e
 Route::get('user/update/{id}', [UserController::class, 'update_user'])->name('user.update');
 // chi tiết user
 Route::get('user/detail/{id}', [UserController::class, 'detail_user'])->name('user.detail');
+
+
+// DÀNH CHO PRODUCT
+Route::get('pro', [Productscontroller::class, 'list_prod'])->name('prod.list');
+Route::get('pro/create', [Productscontroller::class, 'getCreate_prod'])->name('prod.getCreate');
+Route::post('pro/create', [Productscontroller::class, 'postCreate_prod'])->name('prod.postCreate');
