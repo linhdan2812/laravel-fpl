@@ -4,6 +4,43 @@
 <!-- Page Heading -->
 
 <!-- DataTales Example -->
+<!-- lọc -->
+<form class="mb-3">
+    <div class="row">
+        <div class="col row">
+            <label for="" class="form-label">Filter by price</label>
+            <div class="mb-3 col">
+                <label for="exampleInputEmail1" class="form-label">Lowest</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3 col">
+                <label for="exampleInputPassword1" class="form-label">Highest</label>
+                <input type="number" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="mb-3">
+                <select id="disabledSelect" class="form-select">
+                    <option>Defult- Mặc định</option>
+                    <option>Ascending - Tăng dần</option>
+                    <option>Decrease - Giảm dần</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <label for="disabledSelect" class="form-label">filter by category</label>
+            <div class="mb-3">
+                <select id="disabledSelect" class="form-select">
+                    <option>Disabled select</option>
+                    <option>Disabled select</option>
+                    <option>Disabled select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+<!-- danh sách -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Products list</h6>

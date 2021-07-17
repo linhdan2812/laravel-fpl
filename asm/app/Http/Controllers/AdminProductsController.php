@@ -58,9 +58,37 @@ class AdminProductsController extends Controller
     {
         $prod = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.cate_id')
-            ->select('products.*', 'categories.id', 'categories.cate_name')
+            ->select('products.*', 'categories.cate_name')
             ->where('products.id', $id)->get();
-        // dump($prod);
-        return view('admins.products.edit_prod', compact($prod));
+        $cate = Category::all();
+        // dump($cate);
+        return view('admins.products.edit_prod', compact('prod', 'cate'));
+    }
+
+    public function postEdit_product(Request $request)
+    {
+        $id = $request->id;
+        $prod_name = $request->prod_name;
+        $price = $request->price;
+        $sale_percent = $request->sale_percent;
+        $cate_id = $request->cate_id;
+        $image = $request->image;
+        $detail = $request->detail;
+        $update = Product::where('id', $id)->update([
+            'prod_name' => $prod_name,
+            'price' => $price,
+            'sale_percent' => $sale_percent,
+            'cate_id' => $cate_id,
+            'image' => $image,
+            'detail' => $detail
+        ]);
+        if ($update) {
+            return redirect()->route('admin.prod.list');
+        };
+    }
+
+    public function getDetail_product(Request $request, $id)
+    {
+        dump($id);
     }
 }
