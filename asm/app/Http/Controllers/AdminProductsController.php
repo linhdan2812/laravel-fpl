@@ -60,7 +60,7 @@ class AdminProductsController extends Controller
             ->join('categories', 'categories.id', '=', 'products.cate_id')
             ->select('products.*', 'categories.id', 'categories.cate_name')
             ->where('products.id', $id)->get();
-        dump($prod);
-        // return view('admins.products.edit_prod', compact($prod));
+        // dump($prod);
+        return view('admins.products.edit_prod', compact($prod));
     }
 }

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::get('admin', [AdminController::class, 'analytic'])->name('admin.analytic');
 // hiển thị danh sách người dùng
 Route::get('admin/user', [AdminUserController::class, 'user_list'])->name('admin.user.list');
