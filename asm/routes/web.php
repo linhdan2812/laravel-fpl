@@ -57,10 +57,12 @@ Route::get('admin/category/delete/{id}', [AdminCategoriesController::class, 'del
 Route::get('admin/category/edit/{id}', [AdminCategoriesController::class, 'getEdit_cate'])->name('admin.cate.getEdit');
 Route::post('admin/category/edit/{id}', [AdminCategoriesController::class, 'postEdit_cate'])->name('admin.cate.postEdit');
 
+
 // CHUYÊN MỤC DÀNH CHO PRODUCTS
 // danh sách product
 Route::get('admin/products', [AdminProductsController::class, 'getList_prod'])->name('admin.prod.list');
-// xoá 
+Route::post('admin/products', [AdminProductsController::class, 'postList_prod'])->name('admin.prod.postlist');
+// xoá
 Route::post('admin/product/delete/{id}', [AdminProductsController::class, 'delete_product'])->name('admin.prod.delete');
 
 Route::get('admin/product/create', [AdminProductsController::class, 'getCreate_product'])->name('admin.prod.getCreate');

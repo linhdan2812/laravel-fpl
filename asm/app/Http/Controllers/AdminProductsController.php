@@ -20,7 +20,25 @@ class AdminProductsController extends Controller
 
         return view('admins.products.list_prod', compact('products'));
     }
-    // XOÁ ĐÂY NÈ 
+
+    public function postList_prod(Request $request)
+    {
+        $filterPrice = $request->filterPrice;
+        if ($filterPrice) {
+            if ($filterPrice == 1) {
+                $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.cate_id')
+                    ->select('products.*', 'categories.cate_name')->orderBy('price', 'ASC')->get();
+            } else {
+                $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.cate_id')
+                    ->select('products.*', 'categories.cate_name')->orderBy('price', 'DESC')->get();
+            }
+        }
+        // dump($filterPrice);
+        return view('admins.products.list_prod', compact('products'));
+    }
+    // XOÁ ĐÂY NÈ
     public function delete_product(Request $request, $id)
     {
         Product::where('id', $id)->delete();
