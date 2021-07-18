@@ -8,33 +8,16 @@
     <form class="mb-3" action="{{ route('admin.prod.postlist') }}" method="post">
         @csrf
         <div class="row">
-            {{-- <div class="col row">
-            <label for="" class="form-label">Filter by price</label>
-            <div class="mb-3 col">
-                <label for="exampleInputEmail1" class="form-label">Lowest</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-
-            <div class="mb-3 col">
-                <label for="exampleInputPassword1" class="form-label">Highest</label>
-                <input type="number" class="form-control" id="exampleInputPassword1">
-            </div>
-
-            <div class="mb-3">
-                <select id="disabledSelect" class="form-select">
-                    <option>Defult- Mặc định</option>
-                    <option>Ascending - Tăng dần</option>
-                    <option>Decrease - Giảm dần</option>
-                </select>
-            </div>
-        </div> --}}
             <div class="col">
-                <label for="disabledSelect" class="form-label">filter by price</label>
+                <label for="disabledSelect" class="form-label">filter</label>
                 <div class="mb-3">
                     <select id="disabledSelect" class="form-select" name="filterPrice">
                         <option value="1">tăng dần</option>
                         <option value="2">giảm dần</option>
-                        {{-- <option>tất cả</option> --}}
+                        <option value="3">có giảm giá</option>
+                        <option value="4">không giảm giá</option>
+                        <option value="5">sale tăng dần</option>
+                        <option value="6">sale giảm dần</option>
                     </select>
                 </div>
             </div>

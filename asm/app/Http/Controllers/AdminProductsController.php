@@ -29,10 +29,26 @@ class AdminProductsController extends Controller
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->orderBy('price', 'ASC')->get();
-            } else {
+            } elseif ($filterPrice == 2) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->orderBy('price', 'DESC')->get();
+            } elseif ($filterPrice == 3) {
+                $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.cate_id')
+                    ->select('products.*', 'categories.cate_name')->where('sale_percent', '>', '0')->get();
+            } elseif ($filterPrice == 4) {
+                $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.cate_id')
+                    ->select('products.*', 'categories.cate_name')->where('sale_percent', '=', '0')->get();
+            } elseif ($filterPrice == 5) {
+                $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.cate_id')
+                    ->select('products.*', 'categories.cate_name')->orderBy('sale_percent', 'ASC')->get();
+            } else {
+                $products = DB::table('products')
+                    ->join('categories', 'categories.id', '=', 'products.cate_id')
+                    ->select('products.*', 'categories.cate_name')->orderBy('sale_percent', 'DESC')->get();
             }
         }
         // dump($filterPrice);
