@@ -45,9 +45,9 @@
                         <td>{{$user->phone}}</td>
                         <td>
                             @if (($user->active) === 1)
-                            <label class="bg bg-warning text-dark">Active</label>
+                            <label class="bg bg-warning p-1 rounded-pill text-dark">Active</label>
                             @else
-                            <label class="bg bg-info text-dark">Not Active</label>
+                            <label class="bg bg-info text-dark p-1 rounded-pill">Not Active</label>
                             @endif
                         </td>
                         <td>
