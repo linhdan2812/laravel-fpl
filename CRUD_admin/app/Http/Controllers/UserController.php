@@ -14,6 +14,21 @@ class UserController extends Controller
         $list_user = DB::table('users')->paginate(10);
         return view('admins.users.list_user', compact('list_user'));
     }
+
+    public function Postlist_user(Request $request)
+    {
+        $filter = $request->filter;
+        if ($filter) {
+            if ($filter == 0) {
+                $list_user = DB::table('users')->where('gender', '=', '0')->get();
+            } elseif ($filter == 1) {
+                $list_user = DB::table('users')->where('gender', '=', '0')->get();
+            }
+        }
+        dump($list_user);
+        // return view('admins.users.list_user', compact('list_user'));
+    }
+
     public function create_user()
     {
         return view('admins.users.add_user');

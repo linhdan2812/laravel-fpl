@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'count_record'])->name('dashboard');
 // DÀNH CHO USER
 // hiển thị
 Route::get('users', [UserController::class, 'list_user'])->name('user.index');
+Route::post('users', [UserController::class, 'Postlist_user'])->name('user.postindex');
 // trang thêm mới
 Route::get('user/create', [UserController::class, 'create_user'])->name('user.create');
 // thêm mới lên data

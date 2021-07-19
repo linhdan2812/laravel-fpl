@@ -61,6 +61,7 @@ Route::post('admin/category/edit/{id}', [AdminCategoriesController::class, 'post
 // CHUYÊN MỤC DÀNH CHO PRODUCTS
 // danh sách product
 Route::get('admin/products', [AdminProductsController::class, 'getList_prod'])->name('admin.prod.list');
+// truy vấn
 Route::post('admin/products', [AdminProductsController::class, 'postList_prod'])->name('admin.prod.postlist');
 // xoá
 Route::post('admin/product/delete/{id}', [AdminProductsController::class, 'delete_product'])->name('admin.prod.delete');
