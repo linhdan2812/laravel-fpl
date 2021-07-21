@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class AdminProductsController extends Controller
 {
     public function getList_prod()
@@ -73,8 +74,12 @@ class AdminProductsController extends Controller
         $price = $request->price;
         $sale_percent = $request->sale_percent;
         $cate_id = $request->cate_id;
-        $image = $request->image;
         $detail = $request->detail;
+
+        $image = $request->file('image')->getClientOriginalName();
+        $path_image = 'public/products';
+        $path = $request->file('image')->storeAs($path_image, $image);
+
         $create = Product::create([
             'prod_name' => $prod_name,
             'price' => $price,

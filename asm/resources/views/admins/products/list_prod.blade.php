@@ -71,7 +71,9 @@
                                 <td>{{ $product->prod_name }}</td>
                                 <td>{{ $product->cate_name }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td><img src="{{ $product->image }}" alt="" width="150" height="150"></td>
+                                <td><img src="{{ asset('storage/products/' . $product->image) }}" alt="" width="150"
+                                        height="150">
+                                </td>
                                 <th>{{ $product->sale_percent }}</th>
                                 <td>
                                     <a href="">
