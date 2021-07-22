@@ -95,6 +95,7 @@ class AdminProductsController extends Controller
 
     public function getEdit_product(Request $request, $id)
     {
+        $cate = DB::table('categories')->get();
         $prod = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.cate_id')
             ->select('products.*', 'categories.cate_name')
@@ -111,18 +112,23 @@ class AdminProductsController extends Controller
         $price = $request->price;
         $sale_percent = $request->sale_percent;
         $cate_id = $request->cate_id;
-        $image = $request->image;
         $detail = $request->detail;
+        // $image = $request->image;
+        $image = $request->image;
+        $image_name = $image->getClientOriginalName();
+        $path_image = 'public/products';
+        $path =  $image->move($path_image, $image);
         $update = Product::where('id', $id)->update([
             'prod_name' => $prod_name,
             'price' => $price,
             'sale_percent' => $sale_percent,
             'cate_id' => $cate_id,
-            'image' => $image,
+            'image' => "$image_name",
             'detail' => $detail
         ]);
         if ($update) {
             return redirect()->route('admin.prod.list');
+            // dump($update);
         };
     }
 
