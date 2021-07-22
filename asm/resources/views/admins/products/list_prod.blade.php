@@ -12,6 +12,7 @@
                 <label for="disabledSelect" class="form-label">filter</label>
                 <div class="mb-3">
                     <select id="disabledSelect" class="form-select" name="filterPrice">
+                        <option value="0">Mặc định</option>
                         <option value="1">tăng dần</option>
                         <option value="2">giảm dần</option>
                         <option value="3">có giảm giá</option>
@@ -71,8 +72,7 @@
                                 <td>{{ $product->prod_name }}</td>
                                 <td>{{ $product->cate_name }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td><img src="{{ asset('storage/products/' . $product->image) }}" alt="" width="150"
-                                        height="150">
+                                <td><img src="{{ asset('storage/' . $product->image) }}" alt="" width="150" height="150">
                                 </td>
                                 <th>{{ $product->sale_percent }}</th>
                                 <td>

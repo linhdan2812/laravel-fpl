@@ -54,4 +54,13 @@ class AdminCategoriesController extends Controller
             return redirect()->route('admin.cate.list');
         }
     }
+
+    public function find_cate(Request $request)
+    {
+        $find = $request->find;
+        if ($find) {
+            $list_cate = Category::where('cate_name', 'like', "%" . $find . "%")->paginate(10);
+            return view('admins.categories.cate_list', compact('list_cate'));
+        }
+    }
 }

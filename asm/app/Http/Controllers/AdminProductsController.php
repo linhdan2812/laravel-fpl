@@ -70,27 +70,39 @@ class AdminProductsController extends Controller
 
     public function postCreate_product(Request $request)
     {
-        $prod_name = $request->prod_name;
-        $price = $request->price;
-        $sale_percent = $request->sale_percent;
-        $cate_id = $request->cate_id;
-        $detail = $request->detail;
+        // $prod_name = $request->prod_name;
+        // $price = $request->price;
+        // $sale_percent = $request->sale_percent;
+        // $cate_id = $request->cate_id;
+        // $detail = $request->detail;
 
-        $image = $request->file('image')->getClientOriginalName();
-        $path_image = 'public/products';
-        $path = $request->file('image')->storeAs($path_image, $image);
+        // $image = $request->file('image')->getClientOriginalName();
+        // $path_image = 'public/products';
+        // $path = $request->file('image')->storeAs($path_image, $image);
 
-        $create = Product::create([
-            'prod_name' => $prod_name,
-            'price' => $price,
-            'sale_percent' => $sale_percent,
-            'cate_id' => $cate_id,
-            'image' => $image,
-            'detail' => $detail
-        ]);
-        if ($create) {
-            return redirect()->route('admin.prod.list');
+        // $create = Product::create([
+        //     'prod_name' => $prod_name,
+        //     'price' => $price,
+        //     'sale_percent' => $sale_percent,
+        //     'cate_id' => $cate_id,
+        //     'image' => $image,
+        //     'detail' => $detail
+        // ]);
+        // if ($create) {
+        //     return redirect()->route('admin.prod.list');
+        // }
+
+        $model = new Product();
+        // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
+        $model->fill($request->all());
+        // lưu ảnh
+        if ($request->hasFile('image')) {
+            $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = $request->image->storeAs('public/uploads/products', $newFileName);
+            $model->image = str_replace('public/', '', $path);
         }
+        $model->save();
+        return redirect(route('admin.prod.postlist'));
     }
 
     public function getEdit_product(Request $request, $id)
@@ -105,31 +117,46 @@ class AdminProductsController extends Controller
         return view('admins.products.edit_prod', compact('prod', 'cate'));
     }
 
-    public function postEdit_product(Request $request)
+    public function postEdit_product(Request $request, $id)
     {
-        $id = $request->id;
-        $prod_name = $request->prod_name;
-        $price = $request->price;
-        $sale_percent = $request->sale_percent;
-        $cate_id = $request->cate_id;
-        $detail = $request->detail;
+        // $id = $request->id;
+        // $prod_name = $request->prod_name;
+        // $price = $request->price;
+        // $sale_percent = $request->sale_percent;
+        // $cate_id = $request->cate_id;
+        // $detail = $request->detail;
+        // // $image = $request->image;
         // $image = $request->image;
-        $image = $request->image;
-        $image_name = $image->getClientOriginalName();
-        $path_image = 'public/products';
-        $path =  $image->move($path_image, $image);
-        $update = Product::where('id', $id)->update([
-            'prod_name' => $prod_name,
-            'price' => $price,
-            'sale_percent' => $sale_percent,
-            'cate_id' => $cate_id,
-            'image' => "$image_name",
-            'detail' => $detail
-        ]);
-        if ($update) {
-            return redirect()->route('admin.prod.list');
-            // dump($update);
-        };
+        // $image_name = $image->getClientOriginalName();
+        // $path_image = 'public/products';
+        // $path =  $image->move($path_image, $image);
+        // $update = Product::where('id', $id)->update([
+        //     'prod_name' => $prod_name,
+        //     'price' => $price,
+        //     'sale_percent' => $sale_percent,
+        //     'cate_id' => $cate_id,
+        //     'image' => "$image_name",
+        //     'detail' => $detail
+        // ]);
+        // if ($update) {
+        //     return redirect()->route('admin.prod.list');
+        //     // dump($update);
+        // };
+
+        $model = Product::find($id);
+        if (!$model) {
+            return redirect(route('admin.prod.list'));
+        }
+        $model->fill($request->all());
+        if ($request->hasFile('image')) {
+            $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = $request->image->storeAs('public/uploads/products', $newFileName);
+            $model->image = str_replace('public/', '', $path);
+        }
+        $model->save();
+        return redirect(route('admin.prod.list'));
+        // dump($model);
+
     }
 
     public function getDetail_product(Request $request, $id)

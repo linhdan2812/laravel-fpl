@@ -14,7 +14,6 @@ class Product extends Model
         'prod_name',
         'price',
         'detail',
-        'sale_percent',
-        'image'
+        'sale_percent'
     ];
 }

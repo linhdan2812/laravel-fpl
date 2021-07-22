@@ -47,6 +47,7 @@ Route::get('admin/comment/delete/{id}', [AdminCommentController::class, 'delete_
 // CHUYÊN MỤC DÀNH CHO CATEGORIES
 // danh sách category
 Route::get('admin/categories', [AdminCategoriesController::class, 'getList_cate'])->name('admin.cate.list');
+Route::post('admin/categories', [AdminCategoriesController::class, 'find_cate'])->name('admin.cate.find');
 // trỏ đến trang thêm
 Route::get('admin/create-category', [AdminCategoriesController::class, 'getCreate_cate'])->name('admin.cate.getCreate');
 // post thêm cate

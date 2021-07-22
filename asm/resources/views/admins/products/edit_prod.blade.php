@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         @foreach ($prod as $prod)
             <div>
@@ -32,10 +32,10 @@
                 <div class="row">
                     <div class="mb-3 col">
                         <label for="exampleInputEmail1" class="form-label">Image</label>
-                        <input type="file" class="form-control" name="image" value="{{ $prod->image }}">
+                        <input type="file" class="form-control" name="image">
                     </div>
                     <div class="mb-3 col">
-                        <img src="{{ asset('storage/products/' . $prod->image) }}" alt="" width="100px" height="100px"
+                        <img src="{{ asset('storage/' . $prod->image) }}" alt="" width="100px" height="100px"
                             class="rounded">
                     </div>
                 </div>
