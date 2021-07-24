@@ -12,6 +12,7 @@ class AdminProductsController extends Controller
 {
     public function getList_prod()
     {
+        $cate = DB::table('categories')->get();
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.cate_id')
             ->select('products.*', 'categories.cate_name')->orderBy('id', 'DESC')
@@ -19,30 +20,45 @@ class AdminProductsController extends Controller
 
         // dump($products);
 
-        return view('admins.products.list_prod', compact('products'));
+        return view('admins.products.list_prod', compact('products', 'cate'));
     }
 
     public function postList_prod(Request $request)
     {
-        $filterPrice = $request->filterPrice;
-        if ($filterPrice) {
-            if ($filterPrice == 1) {
+
+        // $filterCate = $request->filterCate;
+        // $filterPrice = $request->filterPrice;
+        if ($request->has('find') && $request->find != '') {
+            $products = DB::table('products')
+                ->join('categories', 'categories.id', '=', 'products.cate_id')
+                ->select('products.*', 'categories.cate_name')
+                ->where('prod_name', 'like', "%" . $request->find . "%")
+                ->get();
+        }
+        if ($request->has('filterCate') && $request->filterCate > 0) {
+            $products = DB::table('products')
+                ->join('categories', 'categories.id', '=', 'products.cate_id')
+                ->select('products.*', 'categories.cate_name')->where('cate_id', $request->filterCate)->get();
+        }
+
+        if ($request->has('filterPrice') && $request->filterPrice > 0) {
+            if ($request->filterPrice == 1) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->orderBy('price', 'ASC')->get();
-            } elseif ($filterPrice == 2) {
+            } elseif ($request->filterPrice == 2) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->orderBy('price', 'DESC')->get();
-            } elseif ($filterPrice == 3) {
+            } elseif ($request->filterPrice == 3) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->where('sale_percent', '>', '0')->get();
-            } elseif ($filterPrice == 4) {
+            } elseif ($request->filterPrice == 4) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->where('sale_percent', '=', '0')->get();
-            } elseif ($filterPrice == 5) {
+            } elseif ($request->filterPrice == 5) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
                     ->select('products.*', 'categories.cate_name')->orderBy('sale_percent', 'ASC')->get();
@@ -52,8 +68,9 @@ class AdminProductsController extends Controller
                     ->select('products.*', 'categories.cate_name')->orderBy('sale_percent', 'DESC')->get();
             }
         }
-        // dump($filterPrice);
-        return view('admins.products.list_prod', compact('products'));
+        $cate = DB::table('categories')->get();
+        // dump($products);
+        return view('admins.products.list_prod', compact('products', 'cate'));
     }
     // XOÁ ĐÂY NÈ
     public function delete_product(Request $request, $id)

@@ -9,18 +9,37 @@
         @csrf
         <div class="row">
             <div class="col">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">find</label>
+                    <input type="text" class="form-control" name="find">
+                </div>
+            </div>
+            <div class="col">
                 <label for="disabledSelect" class="form-label">filter</label>
                 <div class="mb-3">
                     <select id="disabledSelect" class="form-select" name="filterPrice">
                         <option value="0">Mặc định</option>
-                        <option value="1">tăng dần</option>
-                        <option value="2">giảm dần</option>
-                        <option value="3">có giảm giá</option>
-                        <option value="4">không giảm giá</option>
-                        <option value="5">sale tăng dần</option>
-                        <option value="6">sale giảm dần</option>
+                        <option value="1">Giá tăng dần</option>
+                        <option value="2">Giá giảm dần</option>
+                        <option value="3">Có giảm giá</option>
+                        <option value="4">Không giảm giá</option>
+                        <option value="5">Sale tăng dần</option>
+                        <option value="6">Sale giảm dần</option>
                     </select>
                 </div>
+            </div>
+            <div class="col">
+                <label for="exampleInputEmail1" class="form-label">Category</label>
+                <div class="mb-3">
+
+                    <select id="disabledSelect" class="form-select" name="filterCate">
+                        <option value="0">mặc định</option>
+                        @foreach ($cate as $c)
+                            <option value="{{ $c->id }}">{{ $c->cate_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Filter</button>
