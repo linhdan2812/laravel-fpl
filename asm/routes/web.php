@@ -57,6 +57,8 @@ Route::get('admin/category/delete/{id}', [AdminCategoriesController::class, 'del
 // sửa cate
 Route::get('admin/category/edit/{id}', [AdminCategoriesController::class, 'getEdit_cate'])->name('admin.cate.getEdit');
 Route::post('admin/category/edit/{id}', [AdminCategoriesController::class, 'postEdit_cate'])->name('admin.cate.postEdit');
+// chi tiết
+// Route::get('admin/category/detail/{id}', [AdminCategoriesController::class, 'detail_cate'])->name('admin.cate.detail');
 
 
 // CHUYÊN MỤC DÀNH CHO PRODUCTS

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,7 @@ class AdminCategoriesController extends Controller
 
     public function delete_cate(Request $request, $id)
     {
-        // dump(1);
+        Product::where('cate_id', $id)->delete();
         Category::where('id', $id)->delete();
         return redirect()->route('admin.cate.list');
     }
@@ -63,4 +64,8 @@ class AdminCategoriesController extends Controller
             return view('admins.categories.cate_list', compact('list_cate'));
         }
     }
+    // public function detail_cate(Request $request, $id)
+    // {
+
+    // }
 }

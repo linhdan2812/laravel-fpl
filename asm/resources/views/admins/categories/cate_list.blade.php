@@ -51,12 +51,16 @@
                                 <td>{{ $cate->cate_name }}</td>
 
                                 <td>
+                                    {{-- <a href="{{ route('admin.cate.detail', $cate->id) }}">
+                                        <i class="fas fa-eye" style="color:#FF00FF"></i>
+                                    </a> --}}
                                     <a href="{{ route('admin.cate.getEdit', $cate->id) }}">
                                         <i class="fas fa-edit" style="color:green"></i>
                                     </a>
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('admin.cate.delete', $cate->id) }}">
+                                    <a href="{{ route('admin.cate.delete', $cate->id) }}"
+                                        onclick="return confirm('Khi bạn xoá danh mục này, các sản phẩm thuộc danh mục này cũng sẽ bị xoá. Bạn chắc chứ?')">
                                         <i class="fas fa-trash-alt" style="color:red"></i>
                                     </a>
 

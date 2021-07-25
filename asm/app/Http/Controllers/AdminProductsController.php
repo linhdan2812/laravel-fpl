@@ -136,30 +136,6 @@ class AdminProductsController extends Controller
 
     public function postEdit_product(Request $request, $id)
     {
-        // $id = $request->id;
-        // $prod_name = $request->prod_name;
-        // $price = $request->price;
-        // $sale_percent = $request->sale_percent;
-        // $cate_id = $request->cate_id;
-        // $detail = $request->detail;
-        // // $image = $request->image;
-        // $image = $request->image;
-        // $image_name = $image->getClientOriginalName();
-        // $path_image = 'public/products';
-        // $path =  $image->move($path_image, $image);
-        // $update = Product::where('id', $id)->update([
-        //     'prod_name' => $prod_name,
-        //     'price' => $price,
-        //     'sale_percent' => $sale_percent,
-        //     'cate_id' => $cate_id,
-        //     'image' => "$image_name",
-        //     'detail' => $detail
-        // ]);
-        // if ($update) {
-        //     return redirect()->route('admin.prod.list');
-        //     // dump($update);
-        // };
-
         $model = Product::find($id);
         if (!$model) {
             return redirect(route('admin.prod.list'));
