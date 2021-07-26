@@ -95,7 +95,7 @@
                                 </td>
                                 <th>{{ $product->sale_percent }}</th>
                                 <td>
-                                    <a href="">
+                                    <a href="{{ route('admin.prod.detail', $product->id) }}">
                                         <i class="fas fa-eye" style="color:#FF00FF"></i>
                                     </a>
                                     <a href="{{ route('admin.prod.getEdit', $product->id) }}">

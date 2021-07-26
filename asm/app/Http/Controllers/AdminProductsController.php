@@ -154,6 +154,10 @@ class AdminProductsController extends Controller
 
     public function getDetail_product(Request $request, $id)
     {
-        dump($id);
+        $prod = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.cate_id')
+            ->select('products.*', 'categories.cate_name')
+            ->where('products.id', $id)->get();
+        return view('admins.products.detail_prod', compact('prod'));
     }
 }

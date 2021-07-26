@@ -37,9 +37,10 @@ class BrandsController extends Controller
 
     public function deleteBrand(Request $request, $id)
     {
-        Planes::where('brand_id', $id)->delete();
+        $plane = Planes::where('brand_id', $id)->delete();
         Brands::where('id', $id)->delete();
         return redirect()->route('listBrand');
+        // dump($plane);
     }
     public function getEditBrand(Request $request, $id)
     {
