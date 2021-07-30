@@ -19,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client/products/newprod');
 })->name('home');
+
+// ===============================ADMIN========================================
 Route::get('admin', [AdminController::class, 'analytic'])->name('admin.analytic');
 // hiển thị danh sách người dùng
 Route::get('admin/user', [AdminUserController::class, 'user_list'])->name('admin.user.list');
@@ -74,3 +76,6 @@ Route::post('admin/product/create', [AdminProductsController::class, 'postCreate
 Route::get('admin/product/edit/{id}', [AdminProductsController::class, 'getEdit_product'])->name('admin.prod.getEdit');
 Route::post('admin/product/edit/{id}', [AdminProductsController::class, 'postEdit_product'])->name('admin.prod.postEdit');
 Route::get('admin/product/detail/{id}', [AdminProductsController::class, 'getDetail_product'])->name('admin.prod.detail');
+
+
+// ==========================================CLIENT====================================================
