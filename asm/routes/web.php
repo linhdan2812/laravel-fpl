@@ -5,6 +5,9 @@ use App\Http\Controllers\AdminCommentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductsController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\ClientProductsController;
+use App\Http\Controllers\loginController;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client/products/newprod');
-})->name('home');
+// Route::get('/', function () {
+//     return view('client/products/newprod');
+// })->name('home');
 
 // ===============================ADMIN========================================
 Route::get('admin', [AdminController::class, 'analytic'])->name('admin.analytic');
@@ -79,3 +82,17 @@ Route::get('admin/product/detail/{id}', [AdminProductsController::class, 'getDet
 
 
 // ==========================================CLIENT====================================================
+// đăng nhập
+Route::get('login', [loginController::class, 'getlogin'])->name('client.getlogin');
+Route::post('login', [loginController::class, 'postlogin'])->name('client.postlogin');
+// Route::get('demo-name/{id}', function ($id) {
+//     return $id;
+// })->middleware(['auth'])->name('demo_route');
+Route::get('demo-name/{id}', function ($id) {
+    return $id;
+})->middleware(['auth'])->name('demo_route');
+
+// sp cũ
+// Route::get('/', [ClientProductsController::class, 'oldproduct']);
+// Sản phẩm mới
+Route::get('/', [ClientProductsController::class, 'newproduct'])->name('home');

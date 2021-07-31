@@ -4,281 +4,118 @@
         <h3>New Products</h3>
         <label class="line"></label>
         <div class="mid-popular">
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="single.html">Sed ut perspiciati</a></h6>
+            @foreach ($newprods as $n)
+                <div class="col-md-3 item-grid simpleCart_shelfItem" style="margin-bottom: 15px">
+                    <div class=" mid-pop">
+                        <div class="pro-img">
+                            <img src="{{ asset('storage/' . $n->image) }}" width="223px" height="131px" alt="">
+                            <div class="zoom-icon ">
+                                <a class="picture" href="images/pc.jpg" rel="title"
+                                    class="b-link-stripe b-animate-go  thickbox"><i
+                                        class="glyphicon glyphicon-search icon "></i></a>
+                                <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                             </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
+                        <div class="mid-1">
+                            <div class="women">
+                                <div class="women-top">
+                                    <span>Brand: {{ $n->cate_name }}</span>
+                                    <h6><a href="single.html">{{ $n->prod_name }}</a></h6>
+                                </div>
+                                <div class="img item_add">
+                                    <a href="#"><img src="images/ca.png" alt=""></a>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-
-                            <div class="clearfix"></div>
+                            <div class="mid-2">
+                                <p><label></label><em class="item_price">{{ $n->price }} đ </em></p>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc1.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc1.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="single.html">At vero eos</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
+            @endforeach
 
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc2.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc2.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="single.html">Sed ut perspiciati</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc3.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc3.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="single.html">On the other</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
             <div class="clearfix"></div>
         </div>
+    </div>
+    {{-- OLD PROD --}}
+    <div class="content-mid">
+        <h3>Old Products</h3>
+        <label class="line"></label>
         <div class="mid-popular">
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc4.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc4.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="single.html">On the other</a></h6>
+            @foreach ($oldprods as $o)
+                <div class="col-md-3 item-grid simpleCart_shelfItem" style="margin-bottom: 15px">
+                    <div class=" mid-pop">
+                        <div class="pro-img">
+                            <img src="{{ asset('storage/' . $o->image) }}" width="223px" height="131px" alt="">
+                            <div class="zoom-icon ">
+                                <a class="picture" href="images/pc.jpg" rel="title"
+                                    class="b-link-stripe b-animate-go  thickbox"><i
+                                        class="glyphicon glyphicon-search icon "></i></a>
+                                <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                             </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
+                        <div class="mid-1">
+                            <div class="women">
+                                <div class="women-top">
+                                    <span>Brand: {{ $o->cate_name }}</span>
+                                    <h6><a href="single.html">{{ $o->prod_name }}</a></h6>
+                                </div>
+                                <div class="img item_add">
+                                    <a href="#"><img src="images/ca.png" alt=""></a>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-
-                            <div class="clearfix"></div>
+                            <div class="mid-2">
+                                <p><label></label><em class="item_price">{{ $o->price }} đ </em></p>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc5.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc5.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="single.html">Sed ut perspiciati</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
+            @endforeach
 
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc6.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc6.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="single.html">At vero eos</a></h6>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    {{-- SALE --}}
+    <div class="content-mid">
+        <h3>Sale Products</h3>
+        <label class="line"></label>
+        <div class="mid-popular">
+            @foreach ($saleprods as $s)
+                <div class="col-md-3 item-grid simpleCart_shelfItem" style="margin-bottom: 15px">
+                    <div class=" mid-pop">
+                        <div class="pro-img">
+                            <img src="{{ asset('storage/' . $s->image) }}" width="223px" height="131px" alt="">
+                            <div class="zoom-icon ">
+                                <a class="picture" href="images/pc.jpg" rel="title"
+                                    class="b-link-stripe b-animate-go  thickbox"><i
+                                        class="glyphicon glyphicon-search icon "></i></a>
+                                <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                             </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
+                        <div class="mid-1">
+                            <div class="women">
+                                <div class="women-top">
+                                    <span>Brand: {{ $s->cate_name }}</span>
+                                    <h6><a href="single.html">{{ $o->prod_name }}</a></h6>
+                                </div>
+                                <div class="img item_add">
+                                    <a href="#"><img src="images/ca.png" alt=""></a>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-
-                            <div class="clearfix"></div>
+                            <div class="mid-2">
+                                <p><em class="item_price">{{ $s->price }} đ </em></p>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="images/pc7.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="images/pc7.jpg" rel="title"
-                                class="b-link-stripe b-animate-go  thickbox"><i
-                                    class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="single.html">Sed ut perspiciati</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
+            @endforeach
 
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
             <div class="clearfix"></div>
         </div>
     </div>
