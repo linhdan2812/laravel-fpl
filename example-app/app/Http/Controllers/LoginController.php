@@ -38,7 +38,13 @@ class LoginController extends Controller
     {
         $model = new User();
         // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
-        $model->fill($request->all());
+        $model->fill([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => '0', //trạng thái người dùng
+            'image' => $request->image,
+        ]);
         // lưu ảnh
         if ($request->hasFile('image')) {
             $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
