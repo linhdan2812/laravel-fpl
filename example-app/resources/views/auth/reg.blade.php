@@ -17,10 +17,6 @@
             <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email">
         </div>
         <div>
-            <label>Your Avatar</label>
-            <input type="file" name="image" class="form-control">
-        </div>
-        <div>
             <label for="disabledSelect" class="form-label">your role</label>
             <select id="disabledSelect" class="form-select" name="role" disabled>
                 <option value="1" selected>You are a reader</option>

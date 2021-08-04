@@ -12,9 +12,9 @@ class PlanesController extends Controller
 {
     public function listPlanes()
     {
-        $user = Auth::check();
+        // $user = Auth::check();
         $planes = Planes::all();
-        dump($user);
+        // dump($user);
         return view('planes.list', compact('planes'));
     }
     public function deletePlane(Request $request, $id)

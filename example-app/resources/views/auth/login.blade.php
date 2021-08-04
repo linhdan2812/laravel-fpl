@@ -8,7 +8,6 @@
     @endif
     <form method="POST">
         @csrf
-
         <div class="form-group">
             <label for="">Email</label>
             <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email"

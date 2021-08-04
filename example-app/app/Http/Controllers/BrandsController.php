@@ -12,12 +12,12 @@ class BrandsController extends Controller
 {
     public function listBrands()
     {
-        $user = Auth::check();
+        // $user = Auth::check();
         $brands = Brands::all();
         // dump($user);
         // if ($user == true) {
         //     $userlogin = Auth::user();
-        dump($user);
+        // dump($user);
         // }
         return view('brands.list', compact('brands'));
     }

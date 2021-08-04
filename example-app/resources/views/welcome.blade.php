@@ -29,11 +29,12 @@
                         <a class="nav-link" href="{{ route('listPlane') }}">Planes</a>
 
                         @if (Auth::check() == true)
-                            <a class="nav-link" href="">{{ Auth::user()->name }}</a>
+                            <a class="nav-link" href="{{ route('detailUser') }}">{{ Auth::user()->name }}</a>
                             <a class="nav-link" href="{{ route('logout') }}">logout</a>
+                            {{-- <a class="nav-link" href="{{ route('detailUser') }}">detail</a> --}}
                         @else
                             <a class="nav-link" href="{{ route('loginForm') }}">Login</a>
-                            <a class="nav-link" href="{{ route('getReg') }}">Regester</a>
+                            <a class="nav-link" href="{{ route('getReg') }}">Register</a>
                         @endif
 
 

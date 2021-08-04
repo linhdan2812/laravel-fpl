@@ -17,7 +17,6 @@ class LoginController extends Controller
     public function Postlogin(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-
             return redirect()->route('listBrand');
         } else {
             return redirect()->back()->with('msg', 'Tài khoản/mật khẩu không chính xác');
@@ -43,15 +42,18 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => '0', //trạng thái người dùng
-            'image' => $request->image,
         ]);
-        // lưu ảnh
-        if ($request->hasFile('image')) {
-            $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('users/', $newFileName);
-            $model->image = str_replace('public/', '', $path);
-        }
         $model->save();
         return redirect(route('loginForm'));
+    }
+    public function detailUser()
+    {
+        // $user = Auth::user();
+        return view('auth.detail');
+    }
+
+    public function editUser()
+    {
+        return view('auth.edit');
     }
 }

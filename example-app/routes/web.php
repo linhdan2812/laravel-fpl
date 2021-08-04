@@ -65,3 +65,7 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 // đăng ký
 Route::get('regester', [LoginController::class, 'getRegForm'])->name('getReg');
 Route::post('regester', [LoginController::class, 'postReg'])->name('postReg');
+// chi tiết
+Route::get('detail', [LoginController::class, 'detailUser'])->name('detailUser');
+// sửa
+Route::get('edit', [LoginController::class, 'editUser'])->name('editUser');
