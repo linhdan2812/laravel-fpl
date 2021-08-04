@@ -19,7 +19,7 @@
                 <tr>
                     <th>{{ $plane->id }}</th>
                     <td>{{ $plane->name }}</td>
-                    <td><img src="{{ asset('storage/' . $plane->image) }}" alt="" width="150" height="150"></td>
+                    <td><img src="{{ asset('uploads/' . $plane->image) }}" alt="" width="150" height="150"></td>
                     <td>{{ $plane->brand_id }}</td>
 
                     <td>

@@ -19,7 +19,7 @@
             <div>
                 <label>image</label>
                 <input type="file" name="image" class="form-control">
-                <img src="{{ asset('storage/' . $p->image) }}" alt="" width="150" height="150"
+                <img src="{{ asset('uploads/' . $p->image) }}" alt="" width="150" height="150"
                     class="rounded-circle mt-3">
             </div>
         @endforeach

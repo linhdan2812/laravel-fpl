@@ -18,7 +18,7 @@
                 <tr>
                     <th>{{ $brand->id }}</th>
                     <td>{{ $brand->name }}</td>
-                    <td><img src="{{ asset('storage/' . $brand->image) }}" alt="" width="150" height="150"></td>
+                    <td><img src="{{ asset('uploads/' . $brand->image) }}" alt="" width="150" height="150"></td>
                     <td>
                         <a href="{{ route('deleteBrand', $brand->id) }}">
                             <button class="btn btn-danger">xoá</button>

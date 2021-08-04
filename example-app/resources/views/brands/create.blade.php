@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('content')
-    <h1>edit brand</h1>
+    <h1>creat brand</h1>
     <form enctype="multipart/form-data" method="POST" action="{{ route('postCreateBrand') }}">
         @csrf
 

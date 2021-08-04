@@ -15,7 +15,7 @@
             <div>
                 <label>image</label>
                 <input type="file" name="image" class="form-control mb-4">
-                <img src="{{ asset('storage/' . $brand->image) }}" alt="" width="150" height="150" class="rounded-circle">
+                <img src="{{ asset('uploads/' . $brand->image) }}" alt="" width="150" height="150" class="rounded-circle">
             </div>
         @endforeach
 

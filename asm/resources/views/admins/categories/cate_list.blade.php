@@ -27,7 +27,7 @@
                         <tr>
                             <th>#</th>
                             <th>Cate Name</th>
-                            <!-- <th>Products</th> -->
+                            <th>Brands</th>
                             <th>Active</th>
 
                         </tr>
@@ -36,7 +36,7 @@
                         <tr>
                             <th>#</th>
                             <th>Cate Name</th>
-                            <!-- <th>Products</th> -->
+                            <th>Brands</th>
                             <th>Active</th>
 
                         </tr>
@@ -49,6 +49,7 @@
                             <tr>
                                 <td>{{ $stt++ }}</td>
                                 <td>{{ $cate->cate_name }}</td>
+                                <td>{{ $cate->brand_name }}</td>
 
                                 <td>
                                     {{-- <a href="{{ route('admin.cate.detail', $cate->id) }}">

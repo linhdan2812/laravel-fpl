@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBrandsController;
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminCommentController;
 use App\Http\Controllers\AdminController;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('client/products/newprod');
-// })->name('home');
+
 
 // ===============================ADMIN========================================
 Route::get('admin', [AdminController::class, 'analytic'])->name('admin.analytic');
@@ -47,7 +46,14 @@ Route::post('admin/comment/edit/{id}', [AdminCommentController::class, 'postEdit
 Route::get('admin/comment/delete/{id}', [AdminCommentController::class, 'delete_comment'])->name('admin.cmt.delete');
 
 
-
+// CHUYÊN MỤC DÀNH CHO BRANDS
+// danh sách
+Route::get('admin/brands', [AdminBrandsController::class, 'getList_brands'])->name('admin.brand.list');
+// thêm
+Route::get('admin/brand/create', [AdminBrandsController::class, 'getCreate_brand'])->name('admin.brand.getCreate');
+Route::post('admin/brand/create', [AdminBrandsController::class, 'postCreate_brand'])->name('admin.brand.postCreate');
+// xoá
+Route::get('admin/brand/delete/{id}', [AdminBrandsController::class, 'delete_brand'])->name('admin.brand.delete');
 
 // CHUYÊN MỤC DÀNH CHO CATEGORIES
 // danh sách category
@@ -85,9 +91,6 @@ Route::get('admin/product/detail/{id}', [AdminProductsController::class, 'getDet
 // đăng nhập
 Route::get('login', [loginController::class, 'getlogin'])->name('client.getlogin');
 Route::post('login', [loginController::class, 'postlogin'])->name('client.postlogin');
-// Route::get('demo-name/{id}', function ($id) {
-//     return $id;
-// })->middleware(['auth'])->name('demo_route');
 Route::get('demo-name/{id}', function ($id) {
     return $id;
 })->middleware(['auth'])->name('demo_route');
@@ -95,4 +98,8 @@ Route::get('demo-name/{id}', function ($id) {
 // sp cũ
 // Route::get('/', [ClientProductsController::class, 'oldproduct']);
 // Sản phẩm mới
-Route::get('/', [ClientProductsController::class, 'newproduct'])->name('home');
+Route::get('/', [ClientProductsController::class, 'newproduct', 'checklogin'])->name('home');
+// Route::get('check', [loginController::class, 'checklogin'])->name('checkLogin');
+// Route::get('/', function () {
+//     return view('client/products/newprod');
+// })->name('home');

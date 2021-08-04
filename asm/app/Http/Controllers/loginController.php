@@ -19,4 +19,10 @@ class loginController extends Controller
             return redirect()->back()->with('msg', 'Tài khoản/mật khẩu không chính xác');
         }
     }
+    // public function checklogin()
+    // {
+    //     $user = Auth::user();
+    //     // dump($user);
+    //     return view('client.auth.checkUser', compact('user'));
+    // }
 }

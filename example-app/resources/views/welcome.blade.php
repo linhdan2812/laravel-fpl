@@ -27,6 +27,16 @@
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="{{ route('listBrand') }}">Brands</a>
                         <a class="nav-link" href="{{ route('listPlane') }}">Planes</a>
+
+                        @if (Auth::check() == true)
+                            <a class="nav-link" href="">{{ Auth::user()->name }}</a>
+                            <a class="nav-link" href="{{ route('logout') }}">logout</a>
+                        @else
+                            <a class="nav-link" href="{{ route('loginForm') }}">Login</a>
+                            <a class="nav-link" href="{{ route('getReg') }}">Regester</a>
+                        @endif
+
+
                     </div>
                 </div>
             </div>

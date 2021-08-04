@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlanesController;
 use App\Http\Controllers\UserController;
 use App\Models\Brands;
 use App\Models\Planes;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +50,18 @@ Route::get('brand/edit/{id}', [BrandsController::class, 'getEditBrand'])->name('
 Route::post('brand/edit/{id}', [BrandsController::class, 'postEditBrand'])->name('postEditBrand');
 Route::get('plane/edit/{id}', [PlanesController::class, 'getEditPlane'])->name('getEditPlane');
 Route::post('plane/edit/{id}', [PlanesController::class, 'postEditPlane'])->name('postEditPlane');
+
+// đăng nhập
+Route::get('login', [LoginController::class, 'loginForm'])->name('loginForm');
+Route::post('login', [LoginController::class, 'Postlogin']);
+Route::get('fake-password/{mk?}', function ($mk = '123456') {
+    return Hash::make($mk);
+});
+Route::get('demo-name/{id}', function ($id) {
+    return $id;
+})->middleware(['auth'])->name('demo_route');
+// đăng xuất
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+// đăng ký
+Route::get('regester', [LoginController::class, 'getRegForm'])->name('getReg');
+Route::post('regester', [LoginController::class, 'postReg'])->name('postReg');

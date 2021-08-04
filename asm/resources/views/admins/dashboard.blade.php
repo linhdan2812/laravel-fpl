@@ -64,13 +64,28 @@
                     <i class="fas fa-fw fa-user"></i>
                     <span>User</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.brand.list') }}" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-copyright"></i>
+                    <span>Brands</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('admin.brand.list') }}">Brands list</a>
+                        <a class="collapse-item" href="{{ route('admin.brand.getCreate') }}">Create new brand</a>
+                    </div>
+                </div>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.cate.list') }}" data-toggle="collapse"
-                    data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    data-target="#collapsefirst" aria-expanded="true" aria-controls="collapsefirst">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Categories</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapsefirst" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('admin.cate.list') }}">Categories list</a>
                         <a class="collapse-item" href="{{ route('admin.cate.getCreate') }}">Create new category</a>

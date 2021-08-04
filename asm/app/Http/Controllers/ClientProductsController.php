@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ClientProductsController extends Controller
@@ -23,5 +24,11 @@ class ClientProductsController extends Controller
             ->select('products.*', 'categories.cate_name')->where('sale_percent', '>', '0')->get();
         // dump($oldprods);
         return view('client.products.newprod', compact('newprods', 'oldprods', 'saleprods'));
+    }
+    public function checklogin()
+    {
+        $user = Auth::user();
+        // dump($user);
+        return view('client.auth.checkUser', compact('user'));
     }
 }

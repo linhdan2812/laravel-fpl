@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brands;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -11,20 +12,25 @@ class AdminCategoriesController extends Controller
 {
     public function getList_cate()
     {
-        $list_cate = DB::table('categories')->paginate(10);
+        $list_cate = DB::table('categories')
+            ->join('brands', 'brands.id', '=', 'categories.brand_id')
+            ->select('categories.*', 'brands.brand_name')->paginate(10);
         return view('admins.categories.cate_list', compact('list_cate'));
     }
 
     public function getCreate_cate()
     {
-        return view('admins.categories.create_cate');
+        $brands = Brands::all();
+        return view('admins.categories.create_cate', compact('brands'));
     }
 
     public function postCreate_cate(Request $request)
     {
         $cate_name = $request->cate_name;
+        $brand_id = $request->brand_id;
         $create = Category::create([
-            'cate_name' => $cate_name
+            'cate_name' => $cate_name,
+            'brand_id' => $brand_id
         ]);
         if ($create) {
             return redirect()->route('admin.cate.list');

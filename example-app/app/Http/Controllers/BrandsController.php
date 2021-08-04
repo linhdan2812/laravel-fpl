@@ -5,18 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Brands;
 use App\Models\Planes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class BrandsController extends Controller
 {
     public function listBrands()
     {
+        $user = Auth::check();
         $brands = Brands::all();
+        // dump($user);
+        // if ($user == true) {
+        //     $userlogin = Auth::user();
+        dump($user);
+        // }
         return view('brands.list', compact('brands'));
     }
+    // public function checklogin()
+    // {
+    //     $user = Auth::user();
+    //     // dump($user);
+    //     return view('client.auth.checkUser', compact('user'));
+    // }
 
     public function getCreate_brand()
     {
+        // $user = Auth::user();
         return view('brands.create');
     }
 
@@ -28,7 +42,7 @@ class BrandsController extends Controller
         // lưu ảnh
         if ($request->hasFile('image')) {
             $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('public/uploads/products', $newFileName);
+            $path = $request->image->storeAs('brands', $newFileName);
             $model->image = str_replace('public/', '', $path);
         }
         $model->save();
@@ -44,10 +58,11 @@ class BrandsController extends Controller
     }
     public function getEditBrand(Request $request, $id)
     {
+        $user = Auth::user();
         $brands = DB::table('brands')->where('id', $id)->get();
         // $brands = Brands::where('id', $request->id)->first();
         // dump($brands);
-        return view('brands.edit', compact('brands'));
+        return view('brands.edit', compact('brands', 'user'));
     }
 
     public function postEditBrand(Request $request, $id)
@@ -59,7 +74,7 @@ class BrandsController extends Controller
         $model->fill($request->all());
         if ($request->hasFile('image')) {
             $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('public/uploads/products', $newFileName);
+            $path = $request->image->storeAs('brands', $newFileName);
             $model->image = str_replace('public/', '', $path);
         }
         $model->save();
