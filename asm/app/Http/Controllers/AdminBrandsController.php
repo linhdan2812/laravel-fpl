@@ -35,12 +35,8 @@ class AdminBrandsController extends Controller
 
     public function delete_brand(Request $request, $id)
     {
-        $idCate = DB::table('categories')->where('brand_id', $id)->select('categories.id')->get();
-        foreach ($idCate as $c) {
-            Product::where('cate_id', $c->id)->delete();
-        }
-        Category::where('brand_id', $id)->delete();
+        Product::where('brand_id', $id)->delete();
         Brands::where('id', $id)->delete();
-        return redirect()->route('admin.cate.list');
+        return redirect()->route('admin.brand.list');
     }
 }

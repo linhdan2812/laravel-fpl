@@ -28,6 +28,14 @@
                 </select>
             </div>
             <div class="mb-3 col">
+                <label for="exampleInputEmail1" class="form-label">Brand</label>
+                <select id="disabledSelect" class="form-select" name="brand_id">
+                    @foreach ($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3 col">
                 <label for="exampleInputEmail1" class="form-label">Image</label>
                 <input type="file" class="form-control" name="image">
             </div>

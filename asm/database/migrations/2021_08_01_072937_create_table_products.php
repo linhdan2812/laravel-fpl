@@ -16,7 +16,7 @@ class CreateTableProducts extends Migration
         Schema::create('Products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cate_id');
-            // $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('brand_id');
             $table->string('prod_name');
             $table->integer('price')->default(0);
             $table->string('image');
@@ -24,7 +24,7 @@ class CreateTableProducts extends Migration
             $table->integer('sale_percent')->default(0);
             $table->timestamps();
             $table->foreign('cate_id')->references('id')->on('categories');
-            // $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

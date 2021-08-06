@@ -71,9 +71,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <div class="col-sm-5 col-md-offset-2  header-login">
                     <ul>
-                        @include('client.auth.checkUser')
+                        @if (Auth::check() == true)
+                            <li><a href="checkout.html">{{ Auth::user()->username }}</a></li>
+                            @if (Auth::user()->active == 0)
+                                <li><a href="{{ route('admin.analytic') }}">Admin</a></li>
+                            @endif
+                        @else
+                            <li><a href="{{ route('client.getlogin') }}">Login</a></li>
+                        @endif
                         <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="{{ route('admin.analytic') }}">Admin</a></li>
                     </ul>
                 </div>
 
@@ -116,59 +122,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <li class="dropdown mega-dropdown active">
                                     <a class="color1" href="#" class="dropdown-toggle"
-                                        data-toggle="dropdown">Categories<span class="caret"></span></a>
+                                        data-toggle="dropdown">Brands<span class="caret"></span></a>
                                     <div class="dropdown-menu ">
                                         <div class="menu-top">
                                             <div class="col1">
                                                 <div class="h_nav">
-                                                    <h4>Submenu1</h4>
                                                     <ul>
-                                                        <li><a href="product.html">Accessories</a></li>
-                                                        <li><a href="product.html">Bags</a></li>
-                                                        <li><a href="product.html">Caps & Hats</a></li>
-                                                        <li><a href="product.html">Hoodies & Sweatshirts</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col1">
-                                                <div class="h_nav">
-                                                    <h4>Submenu2</h4>
-                                                    <ul>
-                                                        <li><a href="product.html">Jackets & Coats</a></li>
-                                                        <li><a href="product.html">Jeans</a></li>
-                                                        <li><a href="product.html">Jewellery</a></li>
-                                                        <li><a href="product.html">Jumpers & Cardigans</a></li>
-                                                        <li><a href="product.html">Leather Jackets</a></li>
-                                                        <li><a href="product.html">Long Sleeve T-Shirts</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col1">
-                                                <div class="h_nav">
-                                                    <h4>Submenu3</h4>
-                                                    <ul>
-                                                        <li><a href="product.html">Shirts</a></li>
-                                                        <li><a href="product.html">Shoes, Boots & Trainers</a></li>
-                                                        <li><a href="product.html">Sunglasses</a></li>
-                                                        <li><a href="product.html">Sweatpants</a></li>
-                                                        <li><a href="product.html">Swimwear</a></li>
-                                                        <li><a href="product.html">Trousers & Chinos</a></li>
-
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-                                            <div class="col1">
-                                                <div class="h_nav">
-                                                    <h4>Submenu4</h4>
-                                                    <ul>
-                                                        <li><a href="product.html">T-Shirts</a></li>
-                                                        <li><a href="product.html">Underwear & Socks</a></li>
-                                                        <li><a href="product.html">Vests</a></li>
-                                                        <li><a href="product.html">Jackets & Coats</a></li>
-                                                        <li><a href="product.html">Jeans</a></li>
-                                                        <li><a href="product.html">Jewellery</a></li>
+                                                        @foreach ($brands as $brand)
+                                                            <li><a href="product.html">{{ $brand->brand_name }}</a>
+                                                            </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>

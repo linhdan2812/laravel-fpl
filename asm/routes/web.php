@@ -99,7 +99,3 @@ Route::get('demo-name/{id}', function ($id) {
 // Route::get('/', [ClientProductsController::class, 'oldproduct']);
 // Sản phẩm mới
 Route::get('/', [ClientProductsController::class, 'newproduct', 'checklogin'])->name('home');
-// Route::get('check', [loginController::class, 'checklogin'])->name('checkLogin');
-// Route::get('/', function () {
-//     return view('client/products/newprod');
-// })->name('home');

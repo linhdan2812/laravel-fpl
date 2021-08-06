@@ -20,6 +20,7 @@ class CreateTableUsers extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->integer('active')->default('1');
+            // $table->integer('role')->default('1');
             $table->timestamps();
         });
     }

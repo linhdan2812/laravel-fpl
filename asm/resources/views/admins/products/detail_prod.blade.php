@@ -3,7 +3,7 @@
     @foreach ($prod as $p)
         <div class="container">
             <div class="p-3 mb-2">
-                <img src="{{ asset('storage/' . $p->image) }}" alt="" width="150" height="150"
+                <img src="{{ asset('uploads/' . $p->image) }}" alt="" width="150" height="150"
                     class=" rounded float-start mx-auto d-block rounded-circle">
             </div>
             <div class="p-3 ml-5 ">

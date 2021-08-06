@@ -8,7 +8,7 @@
                 <div class="col-md-3 item-grid simpleCart_shelfItem" style="margin-bottom: 15px">
                     <div class=" mid-pop">
                         <div class="pro-img">
-                            <img src="{{ asset('storage/' . $n->image) }}" width="223px" height="131px" alt="">
+                            <img src="{{ asset('uploads/' . $n->image) }}" width="250px" height="250px" alt="">
                             <div class="zoom-icon ">
                                 <a class="picture" href="images/pc.jpg" rel="title"
                                     class="b-link-stripe b-animate-go  thickbox"><i
@@ -19,7 +19,7 @@
                         <div class="mid-1">
                             <div class="women">
                                 <div class="women-top">
-                                    <span>Brand: {{ $n->cate_name }}</span>
+                                    <span>{{ $n->brand_name }}-{{ $n->cate_name }}</span>
                                     <h6><a href="single.html">{{ $n->prod_name }}</a></h6>
                                 </div>
                                 <div class="img item_add">
@@ -48,7 +48,7 @@
                 <div class="col-md-3 item-grid simpleCart_shelfItem" style="margin-bottom: 15px">
                     <div class=" mid-pop">
                         <div class="pro-img">
-                            <img src="{{ asset('storage/' . $o->image) }}" width="223px" height="131px" alt="">
+                            <img src="{{ asset('uploads/' . $o->image) }}" width="250px" height="250px" alt="">
                             <div class="zoom-icon ">
                                 <a class="picture" href="images/pc.jpg" rel="title"
                                     class="b-link-stripe b-animate-go  thickbox"><i
@@ -59,7 +59,7 @@
                         <div class="mid-1">
                             <div class="women">
                                 <div class="women-top">
-                                    <span>Brand: {{ $o->cate_name }}</span>
+                                    <span>{{ $o->brand_name }}-{{ $o->cate_name }}</span>
                                     <h6><a href="single.html">{{ $o->prod_name }}</a></h6>
                                 </div>
                                 <div class="img item_add">
@@ -88,7 +88,7 @@
                 <div class="col-md-3 item-grid simpleCart_shelfItem" style="margin-bottom: 15px">
                     <div class=" mid-pop">
                         <div class="pro-img">
-                            <img src="{{ asset('storage/' . $s->image) }}" width="250px" height="150px" alt="">
+                            <img src="{{ asset('uploads/' . $s->image) }}" width="250px" height="250px" alt="">
                             <div class="zoom-icon ">
                                 <a class="picture" href="images/pc.jpg" rel="title"
                                     class="b-link-stripe b-animate-go  thickbox"><i
@@ -99,7 +99,7 @@
                         <div class="mid-1">
                             <div class="women">
                                 <div class="women-top">
-                                    {{-- <span>Brand: {{ $s->cate_name }}</span> --}}
+                                    <span>{{ $s->brand_name }}-{{ $s->cate_name }}</span>
                                     <h6><a href="single.html">{{ $o->prod_name }}</a></h6>
                                 </div>
                                 <div class="img item_add">

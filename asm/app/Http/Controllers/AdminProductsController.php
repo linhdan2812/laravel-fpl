@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brands;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class AdminProductsController extends Controller
         $cate = DB::table('categories')->get();
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.cate_id')
-            ->select('products.*', 'categories.cate_name')->orderBy('id', 'DESC')
+            ->join('brands', 'brands.id', '=', 'products.brand_id')
+            ->select('products.*', 'categories.cate_name', 'brands.brand_name')->orderBy('id', 'DESC')
             ->paginate(10);
 
         // dump($products);
@@ -31,41 +33,56 @@ class AdminProductsController extends Controller
         if ($request->has('find') && $request->find != '') {
             $products = DB::table('products')
                 ->join('categories', 'categories.id', '=', 'products.cate_id')
-                ->select('products.*', 'categories.cate_name')
+                ->join('brands', 'brands.id', '=', 'products.brand_id')
+                ->select('products.*', 'categories.cate_name', 'brands.brand_name')
                 ->where('prod_name', 'like', "%" . $request->find . "%")
                 ->get();
         }
         if ($request->has('filterCate') && $request->filterCate > 0) {
             $products = DB::table('products')
                 ->join('categories', 'categories.id', '=', 'products.cate_id')
-                ->select('products.*', 'categories.cate_name')->where('cate_id', $request->filterCate)->get();
+                ->join('brands', 'brands.id', '=', 'products.brand_id')
+                ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                ->where('cate_id', $request->filterCate)->get();
         }
 
         if ($request->has('filterPrice') && $request->filterPrice > 0) {
             if ($request->filterPrice == 1) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
-                    ->select('products.*', 'categories.cate_name')->orderBy('price', 'ASC')->get();
+                    ->join('brands', 'brands.id', '=', 'products.brand_id')
+                    ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                    ->orderBy('price', 'ASC')->get();
             } elseif ($request->filterPrice == 2) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
-                    ->select('products.*', 'categories.cate_name')->orderBy('price', 'DESC')->get();
+                    ->join('brands', 'brands.id', '=', 'products.brand_id')
+                    ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                    ->orderBy('price', 'DESC')->get();
             } elseif ($request->filterPrice == 3) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
-                    ->select('products.*', 'categories.cate_name')->where('sale_percent', '>', '0')->get();
+                    ->join('brands', 'brands.id', '=', 'products.brand_id')
+                    ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                    ->where('sale_percent', '>', '0')->get();
             } elseif ($request->filterPrice == 4) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
-                    ->select('products.*', 'categories.cate_name')->where('sale_percent', '=', '0')->get();
+                    ->join('brands', 'brands.id', '=', 'products.brand_id')
+                    ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                    ->where('sale_percent', '=', '0')->get();
             } elseif ($request->filterPrice == 5) {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
-                    ->select('products.*', 'categories.cate_name')->orderBy('sale_percent', 'ASC')->get();
+                    ->join('brands', 'brands.id', '=', 'products.brand_id')
+                    ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                    ->orderBy('sale_percent', 'ASC')->get();
             } else {
                 $products = DB::table('products')
                     ->join('categories', 'categories.id', '=', 'products.cate_id')
-                    ->select('products.*', 'categories.cate_name')->orderBy('sale_percent', 'DESC')->get();
+                    ->join('brands', 'brands.id', '=', 'products.brand_id')
+                    ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+                    ->orderBy('sale_percent', 'DESC')->get();
             }
         }
         $cate = DB::table('categories')->get();
@@ -81,8 +98,9 @@ class AdminProductsController extends Controller
 
     public function getCreate_product()
     {
+        $brands = Brands::all();
         $cate = Category::all();
-        return view('admins.products.create_prod', compact('cate'));
+        return view('admins.products.create_prod', compact('cate', 'brands'));
     }
 
     public function postCreate_product(Request $request)
@@ -115,7 +133,7 @@ class AdminProductsController extends Controller
         // lưu ảnh
         if ($request->hasFile('image')) {
             $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('public/uploads/products', $newFileName);
+            $path = $request->image->storeAs('products', $newFileName);
             $model->image = str_replace('public/', '', $path);
         }
         $model->save();
@@ -124,14 +142,16 @@ class AdminProductsController extends Controller
 
     public function getEdit_product(Request $request, $id)
     {
-        $cate = DB::table('categories')->get();
+        // $cate = DB::table('categories')->get();
         $prod = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.cate_id')
-            ->select('products.*', 'categories.cate_name')
+            ->join('brands', 'brands.id', '=', 'products.brand_id')
+            ->select('products.*', 'categories.cate_name', 'brands.brand_name')
             ->where('products.id', $id)->get();
         $cate = Category::all();
+        $brands = Brands::all();
         // dump($cate);
-        return view('admins.products.edit_prod', compact('prod', 'cate'));
+        return view('admins.products.edit_prod', compact('prod', 'cate', 'brands'));
     }
 
     public function postEdit_product(Request $request, $id)
@@ -143,7 +163,7 @@ class AdminProductsController extends Controller
         $model->fill($request->all());
         if ($request->hasFile('image')) {
             $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('public/uploads/products', $newFileName);
+            $path = $request->image->storeAs('products', $newFileName);
             $model->image = str_replace('public/', '', $path);
         }
         $model->save();

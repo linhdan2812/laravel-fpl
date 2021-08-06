@@ -62,6 +62,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Cate</th>
+                            <th>Brands</th>
                             <th>Price</th>
                             <th>Image</th>
                             <th>Sale</th>
@@ -74,6 +75,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Cate</th>
+                            <th>Brand</th>
                             <th>Price</th>
                             <th>Image</th>
                             <th>Sale</th>
@@ -90,8 +92,9 @@
                                 <td>{{ $stt++ }}</td>
                                 <td>{{ $product->prod_name }}</td>
                                 <td>{{ $product->cate_name }}</td>
+                                <td>{{ $product->brand_name }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td><img src="{{ asset('storage/' . $product->image) }}" alt="" width="150" height="150">
+                                <td><img src="{{ asset('uploads/' . $product->image) }}" alt="" width="150" height="150">
                                 </td>
                                 <th>{{ $product->sale_percent }}</th>
                                 <td>

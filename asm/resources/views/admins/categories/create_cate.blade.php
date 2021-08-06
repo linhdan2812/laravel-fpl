@@ -8,14 +8,14 @@
             <label for="exampleInputEmail1" class="form-label">Name of Category</label>
             <input type="text" class="form-control" id="exampleInputEmail1" name="cate_name">
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Brands</label>
             <select id="disabledSelect" class="form-select" name="brand_id">
                 @foreach ($brands as $brand)
                     <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
 
