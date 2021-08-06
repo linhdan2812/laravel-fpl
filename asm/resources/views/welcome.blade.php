@@ -73,11 +73,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul>
                         @if (Auth::check() == true)
                             <li><a href="checkout.html">{{ Auth::user()->username }}</a></li>
+                            <li><a href="{{ route('logout') }}">logout</a></li>
                             @if (Auth::user()->active == 0)
                                 <li><a href="{{ route('admin.analytic') }}">Admin</a></li>
                             @endif
                         @else
                             <li><a href="{{ route('client.getlogin') }}">Login</a></li>
+                            <li><a href="{{ route('getRegister') }}">Register</a></li>
                         @endif
                         <li><a href="checkout.html">Checkout</a></li>
                     </ul>

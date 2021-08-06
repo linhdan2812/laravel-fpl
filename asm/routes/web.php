@@ -94,8 +94,10 @@ Route::post('login', [loginController::class, 'postlogin'])->name('client.postlo
 Route::get('demo-name/{id}', function ($id) {
     return $id;
 })->middleware(['auth'])->name('demo_route');
+// Đăng ký
+Route::get('register', [loginController::class, 'getRegister'])->name('getRegister');
+// đăng xuất
+Route::get('logout', [loginController::class, 'logout'])->name('logout');
 
-// sp cũ
-// Route::get('/', [ClientProductsController::class, 'oldproduct']);
 // Sản phẩm mới
 Route::get('/', [ClientProductsController::class, 'newproduct', 'checklogin'])->name('home');
