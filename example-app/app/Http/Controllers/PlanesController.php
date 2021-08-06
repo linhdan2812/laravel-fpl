@@ -30,6 +30,13 @@ class PlanesController extends Controller
     }
     public function postCreate_plane(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+
+        ], [
+            'name.required' => 'bạn phải điền tên thương hiệu',
+            'name.min' => 'tên thương hiệu phải có ít nhất ba ký tự',
+        ]);
         $model = new Planes();
         $model->fill($request->all());
         // lưu ảnh
@@ -53,6 +60,13 @@ class PlanesController extends Controller
 
     public function postEditPlane(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+
+        ], [
+            'name.required' => 'bạn phải điền tên thương hiệu',
+            'name.min' => 'tên thương hiệu phải có ít nhất ba ký tự',
+        ]);
         $model = Planes::find($id);
         if (!$model) {
             return redirect(route('listPlane'));

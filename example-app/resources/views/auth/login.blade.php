@@ -9,14 +9,20 @@
     <form method="POST">
         @csrf
         <div class="form-group">
+
             <label for="">Email</label>
-            <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email"
-                placeholder="Your email">
+            <input class="form-control form-control-user" id="exampleInputEmail" name="email" placeholder="Your email">
+            @error('email')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
         <div class="form-group">
             <label for="">Your Password</label>
             <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password"
                 name="password">
+            @error('password')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
             <button type="submit" class="btn btn-primary mt-5">Submit</button>
     </form>
 @endsection

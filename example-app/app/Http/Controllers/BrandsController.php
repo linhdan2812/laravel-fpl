@@ -36,6 +36,17 @@ class BrandsController extends Controller
 
     public function postCreate_brand(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+            'address' => 'required',
+            'image' => 'required|image',
+        ], [
+            'name.required' => 'bạn phải điền tên thương hiệu',
+            'name.min' => 'tên thương hiệu phải có ít nhất ba ký tự',
+            'address.required' => 'bạn phải điền địa chỉ',
+            'image.required' => 'bạn chưa chọn ảnh',
+            'image.image' => 'file của bạn phải là file ảnh có định dạng là jpg, jpeg, png, bmp, gif, svg, or webp.'
+        ]);
         $model = new Brands();
         // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
         $model->fill($request->all());
@@ -67,6 +78,16 @@ class BrandsController extends Controller
 
     public function postEditBrand(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+            'address' => 'required',
+
+        ], [
+            'name.required' => 'bạn phải điền tên thương hiệu',
+            'name.min' => 'tên thương hiệu phải có ít nhất ba ký tự',
+            'address.required' => 'bạn phải điền địa chỉ',
+
+        ]);
         $model = Brands::find($id);
         if (!$model) {
             return redirect(route('listBrand'));

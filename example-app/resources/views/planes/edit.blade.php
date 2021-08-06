@@ -7,6 +7,9 @@
             <div>
                 <label>name</label>
                 <input type="text" name="name" class="form-control" value="{{ $p->name }}">
+                @error('name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div>
                 <label>brand</label>

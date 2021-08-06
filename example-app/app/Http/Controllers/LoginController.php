@@ -16,6 +16,17 @@ class LoginController extends Controller
     }
     public function Postlogin(Request $request)
     {
+        $request->validate(
+            [
+                'email' => 'required|email',
+                'password' => 'required',
+            ],
+            [
+                'email.required' => 'bạn chưa nhập email',
+                'email.email' => 'bạn nhập chưa đúng định dạng mail',
+                'password.required' => 'bạn chưa nhập mật khẩu',
+            ]
+        );
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('listBrand');
         } else {
@@ -35,6 +46,20 @@ class LoginController extends Controller
 
     public function postReg(Request $request)
     {
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+            ],
+            [
+                'name.required' => 'bạn chưa nhập tên người dùng',
+                'email.required' => 'bạn chưa nhập email',
+                'email.email' => 'email nhập chưa đúng định dạng',
+                'password.required' => 'bạn chưa nhập mật khẩu',
+                'password.min' => 'mật khẩu ít nhất phải 6 ký tự',
+            ]
+        );
         $model = new User();
         // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
         $model->fill([
