@@ -54,6 +54,9 @@ Route::get('admin/brand/create', [AdminBrandsController::class, 'getCreate_brand
 Route::post('admin/brand/create', [AdminBrandsController::class, 'postCreate_brand'])->name('admin.brand.postCreate');
 // xoá
 Route::get('admin/brand/delete/{id}', [AdminBrandsController::class, 'delete_brand'])->name('admin.brand.delete');
+// sửa
+Route::get('admin/deatail/{id}', [AdminBrandsController::class, 'getEdit_brand'])->name('admin.brand.edit');
+Route::post('admin/deatail/{id}', [AdminBrandsController::class, 'postEdit_brand'])->name('admin.brand.postEdit');
 
 // CHUYÊN MỤC DÀNH CHO CATEGORIES
 // danh sách category
@@ -94,8 +97,12 @@ Route::post('login', [loginController::class, 'postlogin'])->name('client.postlo
 Route::get('demo-name/{id}', function ($id) {
     return $id;
 })->middleware(['auth'])->name('demo_route');
+Route::get('fake-password/{mk?}', function ($mk = '123456') {
+    return Hash::make($mk);
+});
 // Đăng ký
 Route::get('register', [loginController::class, 'getRegister'])->name('getRegister');
+Route::post('register', [loginController::class, 'postRegister'])->name('postRegister');
 // đăng xuất
 Route::get('logout', [loginController::class, 'logout'])->name('logout');
 

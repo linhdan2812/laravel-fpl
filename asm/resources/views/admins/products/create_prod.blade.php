@@ -8,10 +8,16 @@
             <div class="mb-3 col">
                 <label for="exampleInputEmail1" class="form-label">Name of Product</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="prod_name">
+                @error('prod_name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-3 col">
                 <label for="exampleInputEmail1" class="form-label">Price</label>
                 <input type="number" class="form-control" id="exampleInputEmail1" name="price">
+                @error('price')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-3 col">
                 <label for="exampleInputEmail1" class="form-label">Sale percent</label>
@@ -38,11 +44,17 @@
             <div class="mb-3 col">
                 <label for="exampleInputEmail1" class="form-label">Image</label>
                 <input type="file" class="form-control" name="image">
+                @error('image')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Detail</label>
             <textarea id="w3review" name="detail" rows="4" cols="50" class="form-control"></textarea>
+            @error('detail')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>

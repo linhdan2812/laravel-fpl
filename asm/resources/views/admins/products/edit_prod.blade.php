@@ -10,14 +10,21 @@
                     <div class="mb-3 col">
                         <label for="exampleInputEmail1" class="form-label">Name of Product</label>
                         <input type="text" class="form-control" value="{{ $prod->prod_name }}" name="prod_name">
+                        @error('prod_name')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-3 col">
                         <label for="exampleInputEmail1" class="form-label">Price</label>
                         <input type="number" class="form-control" value="{{ $prod->price }}" name="price">
+                        @error('price')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-3 col">
                         <label for="exampleInputEmail1" class="form-label">Sale percent</label>
                         <input type="number" class="form-control" value="{{ $prod->sale_percent }}" name="sale_percent">
+
                     </div>
                 </div>
 
@@ -41,6 +48,9 @@
                     <div class="mb-3 col">
                         <label for="exampleInputEmail1" class="form-label">Image</label>
                         <input type="file" class="form-control" name="image">
+                        @error('image')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-3 col">
                         <img src="{{ asset('uploads/' . $prod->image) }}" alt="" width="100px" height="100px"
@@ -51,6 +61,9 @@
                     <label for="exampleInputEmail1" class="form-label">Detail</label>
                     <textarea id="w3review" name="detail" rows="4" cols="50"
                         class="form-control">{{ $prod->detail }}</textarea>
+                    @error('detail')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
         @endforeach

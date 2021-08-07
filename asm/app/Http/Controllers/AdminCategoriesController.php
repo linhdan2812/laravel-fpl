@@ -25,8 +25,13 @@ class AdminCategoriesController extends Controller
 
     public function postCreate_cate(Request $request)
     {
+        $request->validate([
+            'cate_name' => 'required|min:5'
+        ], [
+            'cate_name.required' => 'bạn chưa nhập tên danh mục',
+            'cate_name.min' => 'độ dài tên danh mục ít nhất 5 ký tự'
+        ]);
         $cate_name = $request->cate_name;
-
         $create = Category::create([
             'cate_name' => $cate_name,
 
@@ -51,6 +56,12 @@ class AdminCategoriesController extends Controller
 
     public function postEdit_cate(Request $request)
     {
+        $request->validate([
+            'cate_name' => 'required|min:5'
+        ], [
+            'cate_name.required' => 'bạn chưa nhập tên danh mục',
+            'cate_name.min' => 'độ dài tên danh mục ít nhất 5 ký tự'
+        ]);
         $id = $request->id;
         $cate_name = $request->cate_name;
         $update = Category::where('id', $id)->update([

@@ -126,7 +126,19 @@ class AdminProductsController extends Controller
         // if ($create) {
         //     return redirect()->route('admin.prod.list');
         // }
-
+        $request->validate([
+            'prod_name' => 'required|min:5',
+            'price' => 'required',
+            'image' => 'required|image',
+            'detail' => 'required'
+        ], [
+            'prod_name.required' => 'bạn chưa nhập tên sản phẩm',
+            'prod_name.min' => 'tên sản phẩm có ít nhất 5 ký tự',
+            'price.required' => 'nhập giá sản phẩm',
+            'image.required' => 'chọn ảnh cho sản phẩm',
+            'image.image' => 'file của bạn phải là file ảnh có định dạng là jpg, jpeg, png, bmp, gif, svg, or webp.',
+            'detail.required' => 'bạn chưa nhập mô tả',
+        ]);
         $model = new Product();
         // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
         $model->fill($request->all());
@@ -156,6 +168,19 @@ class AdminProductsController extends Controller
 
     public function postEdit_product(Request $request, $id)
     {
+        $request->validate([
+            'prod_name' => 'required|min:5',
+            'price' => 'required',
+            'image' => 'required|image',
+            'detail' => 'required'
+        ], [
+            'prod_name.required' => 'bạn chưa nhập tên sản phẩm',
+            'prod_name.min' => 'tên sản phẩm có ít nhất 5 ký tự',
+            'price.required' => 'nhập giá sản phẩm',
+            'image.required' => 'chọn ảnh cho sản phẩm',
+            'image.image' => 'file của bạn phải là file ảnh có định dạng là jpg, jpeg, png, bmp, gif, svg, or webp.',
+            'detail.required' => 'bạn chưa nhập mô tả',
+        ]);
         $model = Product::find($id);
         if (!$model) {
             return redirect(route('admin.prod.list'));

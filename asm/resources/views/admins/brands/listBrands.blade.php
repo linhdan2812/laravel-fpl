@@ -54,10 +54,10 @@
                                     {{-- <a href="{{ route('admin.cate.detail', $cate->id) }}">
                                         <i class="fas fa-eye" style="color:#FF00FF"></i>
                                     </a> --}}
-                                    {{-- <a href="{{ route('admin.cate.getEdit', $cate->id) }}">
+                                    <a href="{{ route('admin.brand.edit', $brand->id) }}">
                                         <i class="fas fa-edit" style="color:green"></i>
                                     </a>
-                                    @csrf
+                                    {{-- @csrf
                                     @method('DELETE') --}}
                                     <a href="{{ route('admin.brand.delete', $brand->id) }}"
                                         onclick="return confirm('Khi bạn xoá danh mục này, các sản phẩm thuộc danh mục này cũng sẽ bị xoá. Bạn chắc chứ?')">
