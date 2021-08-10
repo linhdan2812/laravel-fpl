@@ -18,6 +18,11 @@
                 @error('email')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
+                @if (session('msg'))
+                    <p class="text-danger">{{ session('msg') }}</p>
+                @else
+                    <p class="login-box-msg"></p>
+                @endif
                 <div class="login-mail">
                     <input type="text" placeholder="Phone" id="exampleInputEmail" name="phone">
                     <i class="glyphicon glyphicon-phone"></i>

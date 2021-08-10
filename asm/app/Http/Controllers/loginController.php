@@ -60,17 +60,24 @@ class loginController extends Controller
                 'password.required' => 'bạn chưa nhập password',
             ]
         );
-        $model = new User();
-        // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
-        $model->fill([
-            'username' => $request->username,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-            'active' => '1', //trạng thái người dùng
-        ]);
-        $model->save();
-        return redirect(route('client.getlogin'));
+        $users = User::all();
+        foreach ($users as $users) {
+            if ($users->email == $request->email) {
+                return redirect()->back()->with('msg', 'Username này đã được sử dụng');
+            } else {
+                $model = new User();
+                // gán gtri cho các thuộc tính của object sử dụng massassign ($fillable trong model)
+                $model->fill([
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'password' => Hash::make($request->password),
+                    'active' => '1', //trạng thái người dùng
+                ]);
+                $model->save();
+                return redirect(route('client.getlogin'));
+            }
+        }
     }
     public function logout()
     {
