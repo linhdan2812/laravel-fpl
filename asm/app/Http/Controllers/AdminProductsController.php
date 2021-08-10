@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Brands;
 use App\Models\Category;
 use App\Models\Product;
+use Facade\FlareClient\Stacktrace\File;
+// use Faker\Provider\File as ProviderFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -92,6 +94,11 @@ class AdminProductsController extends Controller
     // XOÁ ĐÂY NÈ
     public function delete_product(Request $request, $id)
     {
+        // $prod = Product::all();
+        // $image_path = app_path('uploads/' . $prod->image);
+        // if (file_exists($image_path)) {
+        //     File::delete($image_path);
+        // }
         Product::where('id', $id)->delete();
         return redirect()->route('admin.prod.list');
     }
@@ -171,13 +178,13 @@ class AdminProductsController extends Controller
         $request->validate([
             'prod_name' => 'required|min:5',
             'price' => 'required',
-            'image' => 'required|image',
+            'image' => 'image',
             'detail' => 'required'
         ], [
             'prod_name.required' => 'bạn chưa nhập tên sản phẩm',
             'prod_name.min' => 'tên sản phẩm có ít nhất 5 ký tự',
             'price.required' => 'nhập giá sản phẩm',
-            'image.required' => 'chọn ảnh cho sản phẩm',
+            // 'image.required' => 'chọn ảnh cho sản phẩm',
             'image.image' => 'file của bạn phải là file ảnh có định dạng là jpg, jpeg, png, bmp, gif, svg, or webp.',
             'detail.required' => 'bạn chưa nhập mô tả',
         ]);

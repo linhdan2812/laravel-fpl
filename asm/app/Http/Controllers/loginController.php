@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class loginController extends Controller
 {
     public function getlogin()
     {
+        $cates = DB::table('categories')->get();
         $brands = DB::table('brands')->get();
-        return view('client.auth.login', compact('brands'));
+        return view('client.auth.login', compact('brands', 'cates'));
     }
     public function postlogin(Request $request)
     {
@@ -33,16 +35,18 @@ class loginController extends Controller
     }
     public function getRegister()
     {
+        $cates = DB::table('categories')->get();
         $brands = DB::table('brands')->get();
-        return view('client.auth.regis', compact('brands'));
+        return view('client.auth.regis', compact('brands', 'cates'));
     }
     public function postRegister(Request $request)
     {
         $request->validate(
             [
                 'username' => 'required|min:5',
-                'email' => 'required|email',
-                'phone' => 'required|regex:/^(\0)[0-9]{9}$/',
+                'email' => 'required|email|',
+                // "email" => ValidationRule::unique('users')->ignore($this->id),
+                'phone' => 'required',
                 'password' => 'required',
             ],
             [
@@ -50,8 +54,9 @@ class loginController extends Controller
                 'username.min' => 'Username ít nhất 5 ký tự',
                 'email.email' => 'email không đúng định dạng',
                 'email.required' => 'bạn chưa nhập email',
+                // 'email.unique' => 'trùng email',
                 'phone.required' => 'bạn chưa nhập số điện thoại',
-                'phone.regex' => 'số điện thoại không đúng định dạng',
+                // 'phone.regex' => 'số điện thoại không đúng định dạng',
                 'password.required' => 'bạn chưa nhập password',
             ]
         );
@@ -71,5 +76,42 @@ class loginController extends Controller
     {
         Auth::logout();
         return redirect(route('home'));
+    }
+    public function userInfor()
+    {
+        $cates = DB::table('categories')->get();
+        $brands = DB::table('brands')->get();
+        return view('client.auth.infor', compact('brands', 'cates'));
+    }
+    public function getChange()
+    {
+        $cates = DB::table('categories')->get();
+        $brands = DB::table('brands')->get();
+        return view('client.auth.change_info', compact('cates', 'brands'));
+    }
+    public function postChange(Request $request)
+    {
+        $request->validate(
+            [
+                'password' => 'required',
+                'new_password' => 'required|min:6|different:password',
+            ],
+            [
+                'password.required' => 'bạn chưa nhập mật khẩu cũ',
+                'new_password.required' => 'bạn chưa nhập mật khẩu mới',
+                'new_password.different' => 'mật khẩu mới trùng mật khẩu cũ',
+                'new_password.min' => 'mật khẩu có ít nhất 6 ký tự',
+            ]
+        );
+        $id = $request->id;
+        $detailUser = User::where('id', $id)->first();
+        if (Hash::check($request->password, $detailUser->password)) {
+            $detailUser->fill([
+                'password' => Hash::make($request->new_password)
+            ])->save();
+            return redirect()->route('userinfor');
+        } else {
+            return redirect()->back()->with('msg', 'mật khẩu cũ không đúng');
+        }
     }
 }

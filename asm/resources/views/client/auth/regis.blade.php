@@ -1,68 +1,54 @@
 @extends('welcome')
 @section('contents')
-    <form action="" method="post">
-        @csrf
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Register</h1>
-                                </div>
-                                <form class="user">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                            name="username" placeholder="Username">
-                                        @error('username')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-user" name="email" placeholder="email">
-                                        @error('email')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" placeholder="phone"
-                                            name="phone">
-                                        @error('phone')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-user" id="exampleInputPassword"
-                                            type="password" placeholder="Password" name="password">
-                                        @error('password')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Registration</button>
-                                    <hr>
-
-                                </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+    <div class="login">
+        <form action="" method="post">
+            @csrf
+            <div class="col-md-6 login-do">
+                <div class="login-mail">
+                    <input type="text" placeholder="Username" id="exampleInputEmail" name="username">
+                    <i class="glyphicon glyphicon-user"></i>
                 </div>
-
+                @error('username')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <div class="login-mail">
+                    <input type="text" placeholder="Email" id="exampleInputEmail" name="email">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </div>
+                @error('email')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <div class="login-mail">
+                    <input type="text" placeholder="Phone" id="exampleInputEmail" name="phone">
+                    <i class="glyphicon glyphicon-phone"></i>
+                </div>
+                @error('phone')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <div class="login-mail">
+                    <input type="password" placeholder="Password" name="password">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </div>
+                @error('password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <button class="btn btn-danger  hvr-skew-backward" type="submit">Register</button>
             </div>
+        </form>
+        <div class="col-md-6 login-right">
+            <h3>Completely Free Account</h3>
 
+            <p>Pellentesque neque leo, dictum sit amet accumsan non, dignissim ac mauris. Mauris rhoncus, lectus
+                tincidunt tempus aliquam, odio
+                libero tincidunt metus, sed euismod elit enim ut mi. Nulla porttitor et dolor sed condimentum. Praesent
+                porttitor lorem dui, in pulvinar enim rhoncus vitae. Curabitur tincidunt, turpis ac lobortis hendrerit,
+                ex elit vestibulum est, at faucibus erat ligula non neque.</p>
+            <a href="{{ route('client.getlogin') }}">
+                <button class="btn btn-danger hvr-skew-backward">Login</button>
+            </a>
         </div>
-    </form>
 
+        <div class="clearfix"> </div>
+        </form>
+    </div>
 @endsection

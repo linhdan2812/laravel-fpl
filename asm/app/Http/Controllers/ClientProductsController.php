@@ -30,6 +30,18 @@ class ClientProductsController extends Controller
             ->where('sale_percent', '>', '0')->get();
         // dump($oldprods);
         $brands = DB::table('brands')->get();
-        return view('client.products.newprod', compact('newprods', 'oldprods', 'saleprods', 'brands'));
+        $cates = DB::table('categories')->get();
+        return view('client.products.newprod', compact('newprods', 'oldprods', 'saleprods', 'brands', 'cates'));
+    }
+    public function detailProduct(Request $request, $id)
+    {
+        $cates = DB::table('categories')->get();
+        $brands = DB::table('brands')->get();
+        $detailProd = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.cate_id')
+            ->join('brands', 'brands.id', '=', 'products.brand_id')
+            ->select('products.*', 'categories.cate_name', 'brands.brand_name')
+            ->where('products.id', $id)->get();
+        return view('client.products.detail', compact('detailProd', 'brands', 'cates'));
     }
 }

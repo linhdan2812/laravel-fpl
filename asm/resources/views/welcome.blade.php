@@ -53,8 +53,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
-    <!---//End-rate---->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -71,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <div class="col-sm-5 col-md-offset-2  header-login">
                     <ul>
-                        @if (Auth::check() == true)
+                        {{-- @if (Auth::check() == true)
                             <li><a href="checkout.html">{{ Auth::user()->username }}</a></li>
                             <li><a href="{{ route('logout') }}">logout</a></li>
                             @if (Auth::user()->active == 0)
@@ -80,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         @else
                             <li><a href="{{ route('client.getlogin') }}">Login</a></li>
                             <li><a href="{{ route('getRegister') }}">Register</a></li>
-                        @endif
+                        @endif --}}
                         <li><a href="checkout.html">Checkout</a></li>
                     </ul>
                 </div>
@@ -120,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                             <ul class="nav navbar-nav nav_1">
-                                <li><a class="color" href="index.html">Home</a></li>
+                                <li><a class="color" href="{{ route('home') }}">Home</a></li>
 
                                 <li class="dropdown mega-dropdown active">
                                     <a class="color1" href="#" class="dropdown-toggle"
@@ -145,61 +146,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </li>
                                 <li class="dropdown mega-dropdown active">
-                                    <a class="color2" href="#" class="dropdown-toggle" data-toggle="dropdown">Men<span
-                                            class="caret"></span></a>
+                                    <a class="color2" href="#" class="dropdown-toggle"
+                                        data-toggle="dropdown">Categories<span class="caret"></span></a>
                                     <div class="dropdown-menu mega-dropdown-menu">
                                         <div class="menu-top">
                                             <div class="col1">
                                                 <div class="h_nav">
-                                                    <h4>Submenu1</h4>
                                                     <ul>
-                                                        <li><a href="product.html">Accessories</a></li>
-                                                        <li><a href="product.html">Bags</a></li>
-                                                        <li><a href="product.html">Caps & Hats</a></li>
-                                                        <li><a href="product.html">Hoodies & Sweatshirts</a></li>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col1">
-                                                <div class="h_nav">
-                                                    <h4>Submenu2</h4>
-                                                    <ul>
-                                                        <li><a href="product.html">Jackets & Coats</a></li>
-                                                        <li><a href="product.html">Jeans</a></li>
-                                                        <li><a href="product.html">Jewellery</a></li>
-                                                        <li><a href="product.html">Jumpers & Cardigans</a></li>
-                                                        <li><a href="product.html">Leather Jackets</a></li>
-                                                        <li><a href="product.html">Long Sleeve T-Shirts</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col1">
-                                                <div class="h_nav">
-                                                    <h4>Submenu3</h4>
-
-                                                    <ul>
-                                                        <li><a href="product.html">Shirts</a></li>
-                                                        <li><a href="product.html">Shoes, Boots & Trainers</a></li>
-                                                        <li><a href="product.html">Sunglasses</a></li>
-                                                        <li><a href="product.html">Sweatpants</a></li>
-                                                        <li><a href="product.html">Swimwear</a></li>
-                                                        <li><a href="product.html">Trousers & Chinos</a></li>
-
-                                                    </ul>
-
-                                                </div>
-                                            </div>
-                                            <div class="col1">
-                                                <div class="h_nav">
-                                                    <h4>Submenu4</h4>
-                                                    <ul>
-                                                        <li><a href="product.html">T-Shirts</a></li>
-                                                        <li><a href="product.html">Underwear & Socks</a></li>
-                                                        <li><a href="product.html">Vests</a></li>
-                                                        <li><a href="product.html">Jackets & Coats</a></li>
-                                                        <li><a href="product.html">Jeans</a></li>
-                                                        <li><a href="product.html">Jewellery</a></li>
+                                                        @foreach ($cates as $c)
+                                                            <li><a href="product.html">{{ $c->cate_name }}</a></li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
@@ -214,6 +170,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li><a class="color4" href="404.html">About</a></li>
                                 <li><a class="color5" href="typo.html">Short Codes</a></li>
                                 <li><a class="color6" href="contact.html">Contact</a></li>
+                                @if (Auth::check() == true)
+                                    <li class="dropdown mega-dropdown active">
+                                        <a class="color2" href="#" class="dropdown-toggle"
+                                            data-toggle="dropdown">{{ Auth::user()->username }}<span
+                                                class="caret"></span></a>
+                                        <div class="dropdown-menu mega-dropdown-menu">
+                                            <div class="menu-top">
+                                                <div class="col1">
+                                                    <div class="h_nav">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="{{ route('userinfor') }}">User Infor</a>
+                                                                @if (Auth::user()->active == 0)
+                                                                    <a href="{{ route('admin.analytic') }}">Admin</a>
+                                                                @endif
+                                                                <a href="{{ route('logout') }}">Logout</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col1 col5">
+                                                    <img src="images/me1.png" class="img-responsive" alt="">
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @else
+                                    <li><a href="{{ route('client.getlogin') }}">Login</a></li>
+                                    <li><a href="{{ route('getRegister') }}">Register</a></li>
+                                @endif
+
                             </ul>
                         </div><!-- /.navbar-collapse -->
 
@@ -227,7 +215,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </li>
                         <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i
-                                    class="glyphicon glyphicon-search"> </i></a></li>
+                                    class="glyphicon glyphicon-search">
+                                </i></a></li>
                     </ul>
                     <div class="cart box_1">
                         <a href="checkout.html">
@@ -309,7 +298,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--content-->
-    <div class="content">
+    <div class="content" style="margin-bottom: 20px">
         <div class="container">
             <!--products-->
             @yield('contents')
