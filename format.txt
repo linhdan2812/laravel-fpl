@@ -1,0 +1,2 @@
+ngày tháng
+{{Carbon\Carbon::parse($table->date)->format('j F, Y')}}

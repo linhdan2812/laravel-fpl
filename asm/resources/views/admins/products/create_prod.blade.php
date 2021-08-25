@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="{{ route('admin.prod.postCreate') }}" method="POST" enctype="multipart/form-data">
+    <form>
         @csrf
         <div class="row">
             <div class="mb-3 col">
