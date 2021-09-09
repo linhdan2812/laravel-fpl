@@ -10,7 +10,7 @@
                 <div class="ml-5">
                     <h4 class="text-danger">{{ $p->prod_name }}</h4>
                     <h5>price: {{ $p->price }}</h5>
-                    <p>{{ $p->detail }}</p>
+                    <p style="display:inline-block">{{ $p->detail }}</p>
                 </div>
             </div>
         </div>

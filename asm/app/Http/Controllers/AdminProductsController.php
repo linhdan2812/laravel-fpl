@@ -156,7 +156,7 @@ class AdminProductsController extends Controller
             $model->image = str_replace('public/', '', $path);
         }
         $model->save();
-        return redirect(route('admin.prod.postlist'));
+        return redirect(route('admin.prod.list'));
     }
 
     public function getEdit_product(Request $request, $id)

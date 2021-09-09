@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form>
+    <form method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="mb-3 col">
